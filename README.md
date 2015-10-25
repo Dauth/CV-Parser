@@ -16,6 +16,6 @@ Current classes/Node to be passed around are
 MainController (yusuf)
  * is to pass a json file to Parser NOT a path location to where the json file resides. Parser will decode it before parsing and encode it to return to Maincontroller
  * All done locally
-### Stuff used to make this:
+
 
 Parser will be using rule based matching for now
