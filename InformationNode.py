@@ -5,8 +5,8 @@ class InformationNode(object):
     def __init__(self, content = None):
         self.contentType = None
         self.skillSet = set()
-        self.qualitySet = set()
-        self.educationLevelSet = set()
+        self.experience = []
+        self.education = []
         self.content = content or []
 
 
@@ -26,17 +26,17 @@ class InformationNode(object):
     def getSkills(self):
         return self.skillSet
 
-    def addQualification(self, inputQualification):
-        self.qualitySet.add(inputQualification)
+    def addExperience(self, inputExperience):
+        self.experience.append(inputExperience)
 
-    def getQualifications(self):
-        return self.qualitySet
+    def getExperience(self):
+        return self.experience
 
     def addEducation(self, education):
-        self.educationLevelSet.add(education)
+        self.education.append(education)
 
     def getEducation(self):
-        return self.educationLevelSet
+        return self.education
 
     def getContent(self):
         return self.content
@@ -46,4 +46,4 @@ class InformationNode(object):
 
     @staticmethod
     def convertStringIntoList(inputText):
-        return inputText[0].split('\n').lower()
+        return inputText[0].lower().split('\n')
