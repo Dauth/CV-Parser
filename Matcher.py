@@ -16,10 +16,12 @@ class Matcher(object):
         s = set()
         #do matching
         keywords = job.getImptKeywords()
-        for i in keywords:
-            #loop iterating through resume words
-            #compare
-            
+        qualifications = resume.getQualification()
+        education = resume.getEducation()
+        skills = resume.getSkills()
+        s.union(keywords.intersection(qualifications))
+        s.union(keywords.intersection(education))
+        s.union(keywords.intersection(skills))
         new_match = Match(resume, job, s)
         return new_match
 
