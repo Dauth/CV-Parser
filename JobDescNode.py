@@ -6,7 +6,7 @@ from InformationNode import InformationNode
 class JobDescNode(InformationNode):
 
     def __init__(self, content, keyword = None):
-        super().__init__(content)
+        super(JobDescNode, self).__init__(content)
         self.setContentTypeAsJob()
         self.importantKeywords = []
         self.addImptKeyword(keyword)
