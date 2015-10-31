@@ -22,6 +22,8 @@ class FieldLocator(object):
     def isKeywordPresentInField(self, lineNo, wordsInLine):
         for word in wordsInLine:
             #print(word)
+            if word == 'volunteer':
+                continue
             if word in self.getEducationKeywordsList():
                 self.fieldNode.setEducationIndex(lineNo)
             if word in self.getSkillKeywordList():
@@ -40,6 +42,9 @@ class FieldLocator(object):
 
     def getExperienceKeywordList(self):
         return ['work', 'experience', 'employment', 'position']
+
+    def getIgnoredKeywordList(self):
+        return ['volunteer']
 
     def getFieldNode(self):
         return self.fieldNode

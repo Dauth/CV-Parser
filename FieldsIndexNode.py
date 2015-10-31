@@ -5,7 +5,7 @@ class FieldsIndexNode(object):
     def __init__(self):
         self.educationIndex = -1
         self.skillsIndex = -1
-        self.experienceIndex = -1
+        self.experienceIndex = []
 
     def setEducationIndex(self, num):
         self.educationIndex = num
@@ -22,7 +22,7 @@ class FieldsIndexNode(object):
         return bool(self.skillsIndex)
 
     def setExperienceIndex(self, num):
-        self.experienceIndex = num
+        self.experienceIndex.append(num)
     def getExperienceIndex(self):
         return self.experienceIndex
     def isExperienceIndexPresent(self):

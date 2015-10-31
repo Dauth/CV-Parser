@@ -1,5 +1,5 @@
 __author__ = 'Owner'
-
+import re
 
 class ExperienceSubNode(object):
     def __init__(self, workPosition, workDuration = None):
@@ -17,7 +17,12 @@ class ExperienceSubNode(object):
         self.workDuration = workDuration
 
     def getJobTitle(self):
-        return self.workPosition.split('at')[0].rstrip()
+        # temp = re.search(r'\b([a-z ]+?) at ([a-z ]+)\b(?= \w+ \d+ - |$).*', self.workPosition)
+        # print(temp.group(1))
+        # print(temp.group(2))
+        return re.search(r'\b([a-z ]+?) at ([a-z ]+)\b(?= \w+ \d+ - |$).*', self.workPosition).group(1).strip()
+        #return self.workPosition.split(' at ', 1)[0].rstrip()
 
     def getJobLocation(self):
-        return self.workPosition.split('at')[1].rstrip()
+        return re.search(r'\b([a-z ]+?) at ([a-z ]+)\b(?= \w+ \d+ - |$).*', self.workPosition).group(2).strip()
+        #return self.workPosition.split(' at ', 1)[1].rstrip()

@@ -15,17 +15,15 @@ class ExperienceParser(IParser):
         content = InformationNode.convertStringIntoList(node.getContent())
         workDuration = ""
         workPosition = ""
-        for line in content[fieldNode.getExperienceIndex() + 1:]:
-            if line:
+        for index in fieldNode.getExperienceIndex():
+            for line in content[index + 1:]:
                 wordsInList = word_tokenize(line)
-                if len(wordsInList) <= 2:#hit a new sub topic in the document
-                    break
-                else:
-                    workPositionkReg = self.getWorkPositionUsingAt(line)
+                if len(wordsInList) > 2:#so that we only process everything within the experience header
+                    workPositionkReg = self.extractWorkPositionUsingAt(line)
                     if workPositionkReg:
                         workPosition = workPositionkReg.group(0)
 
-                    workDurationReg = self.getDuration(line)
+                    workDurationReg = self.extractDuration(line)
                     if workDurationReg:
                         workDuration = workDurationReg.group(0)
 
@@ -37,7 +35,7 @@ class ExperienceParser(IParser):
 
 
 
-    def getWorkPositionUsingAt(self, line):
+    def extractWorkPositionUsingAt(self, line):
         return re.search(r'([A-Za-z\s*]+) at ([A-Za-z\s*]+)', line)
-    def getDuration(self, line):
+    def extractDuration(self, line):
         return re.search(r'((january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)\s*\d*\s*(to|-)\s*(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec|present|current|now)\s*\d*\s*)', line)

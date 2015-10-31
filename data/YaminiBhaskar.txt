@@ -50,7 +50,7 @@ Members:Yamini B., vinoth S., Uma Bhavani
 
 Page1
 
-Designed and constructed a Brain Computer Interface (BCI) using LABVIEW and ELVIS to detect visually
+Designed and constructed a Brain Computer Interface (BCI) using LABVIEW and ELVIS to detect visually
  evoked potentials and train users to control the glowing of an LED on the computer screen by voluntary
  electroencephalogram (EEG) modulation. This BCI system requires only two electrodes, and has a relatively
  short training time for both the user and the machine. This will be greatly beneficial for paralytic patients.
@@ -101,7 +101,7 @@ Volunteer teacher  at   SINDA
 
 Page2
 
-August 2011  -  Present (4 years 3 months)
+August 2011  -  Present (4 years 3 months)
 
 Conduct reading classes for children on weekends to help them improve their english reading skills.
 
@@ -146,11 +146,10 @@ June 2015 to Present
 
 Page3
 
-Yamini Bhaskar
+Yamini Bhaskar
 Operations Manager at Holmusk
 
 Contact Yamini on LinkedIn
 
 Page4
 
-
