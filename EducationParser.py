@@ -8,17 +8,15 @@ from nltk import word_tokenize
 import re
 
 class EducationParser(IParser):
-    def __init__(self):
-        pass
+    def __init__(self, input):
+        self.content = InformationNode.convertStringIntoList(input)
     def parse(self, node, fieldNode):
-        content = InformationNode.convertStringIntoList(node.getContent())
-        educationDict = dict()
         educationLevel = ""
         educationLocation = ""
-        for line in content[fieldNode.getEducationIndex():]:
-            if line:
-                test = word_tokenize(line)
-                for word in test:
+        for line in self.content[fieldNode.getEducationIndex():]:
+            wordsList = word_tokenize(line)
+            if len(wordsList) > 0:
+                for word in wordsList:
                     if word in self.getEducationLevel():
                         educationLevel = line
                     if word in self.getEducationLocation():

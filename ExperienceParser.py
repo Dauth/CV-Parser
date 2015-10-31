@@ -9,14 +9,13 @@ from ExperienceSubNode import ExperienceSubNode
 import re
 
 class ExperienceParser(IParser):
-    def __init__(self):
-        pass
+    def __init__(self, input):
+        self.content = InformationNode.convertStringIntoList(input)
     def parse(self, node, fieldNode):
-        content = InformationNode.convertStringIntoList(node.getContent())
         workDuration = ""
         workPosition = ""
         for index in fieldNode.getExperienceIndex():
-            for line in content[index + 1:]:
+            for line in self.content[index + 1:]:
                 wordsInList = word_tokenize(line)
                 if len(wordsInList) > 2:#so that we only process everything within the experience header
                     workPositionkReg = self.extractWorkPositionUsingAt(line)

@@ -9,7 +9,7 @@ class ResumeNode(InformationNode):
         self.name = name
         self.hpNumber = hpNumber
         self.email = email
-	self.contentID = contentID
+        self.contentID = contentID
         self.setContentTypeAsResume()
 
     def setName(self, name):

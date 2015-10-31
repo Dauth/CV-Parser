@@ -23,7 +23,7 @@ class ResumeProcessor(object):
         fl.identifyFields(node)
 
         for parserType in ResumeProcessor.__parserList:
-            parser = ParserFactory.createParser(parserType)
+            parser = ParserFactory.createParser(parserType, node.getContent())
             parser.parse(node, fl.getFieldNode())
             
 

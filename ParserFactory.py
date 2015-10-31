@@ -17,9 +17,9 @@ class ParserFactory(object):
                    "skills": SkillsParser}
 
     @staticmethod
-    def createParser(nameOfParser):
+    def createParser(nameOfParser, input):
         parserClass = ParserFactory.__parserClassesDict.get(nameOfParser)
 
         if parserClass:
-            return parserClass()
+            return parserClass(input)
         raise NotImplementedError("No such {} parser has been implemented yet".format(nameOfParser))
