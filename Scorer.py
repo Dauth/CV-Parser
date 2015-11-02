@@ -1,48 +1,44 @@
 from sets import Set
+from collections import defaultdict
 import json
 import MatchBox
 import Match
-import CustomClassJson
+import Facade
 
 class Scorer(object):
     """docstring for Scorer"""
     def __init__(self, db):
         self.db = db
-        self.priorityWords = [None] * 11;
 
     #calculate and stores score in db
     def calculateScore(self):
-        results = dict()
+        results = defaultdict(list)
         #get all MatchBoxes from DB and put in a list
-        matchBoxes = []
-
+        matchBoxes = db.getMatchBoxes()
+        emptyMatchBoxes = set()
         #for all matchBoxes in matchBoxes
         for mb in matchBoxes:
             matches = mb.getMatches()
-            matchList = []
             #for each match in each matchbox
-            for curMatch in matches
+            for curMatch in matches:
                 score = 0
                 wordSet = curMatch.getMatchedWords()
                 #for each word in each match object
                 for curWord in wordSet:
-                    if curWord in piorityWords:
-                        score += (11 - priorityWords.index(curWord)) * 2 
-                    else:
-                        score += 1
-                matchList.append((curMatch.resume, score))
-            matchList.sort(key=lambda x: x[1]), reverse = True)
-            results[mb.job] = matchList;
+                    score += 1
+                results[mb.job].append((curMatch.resume, score))
+            results[mb.job].sort(key=lambda x: x[1], reverse = True)
+            emptyBox = MatchBox(mb.job)
+            emptyMatchBoxes.add(emptyBox)
 
-        resultsJson = json.dumps(results)
-        #insert resultsJson to db
+        db.storeMatchBoxes(emptyMatchBoxes)
+        db.storeResults(results)
+        #insert results to db
         '''
-        resultsJson will be dictionary, key will be job and value will
+        results will be dictionary, key will be job and value will
         be a list of tuples(resume, score) sorted by descending order of 
         scores
         '''
-    def insertPriority(self, word, priority):
-        if priority > 0 and priority <11:
-            self.priorityWords[priority] = word
+
 
         
