@@ -10,3 +10,5 @@ class MatchBox(object)
         self.matches.add(new_match)
     def getMatches(self):
         return self.matches
+    def getJob(self):
+        return self.job

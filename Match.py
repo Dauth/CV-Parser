@@ -8,5 +8,9 @@ class Match(object):
         self.job = job
         self.word_set = word_set
 
-    def getMatchedWords():
+    def getMatchedWords(self):
         return self.word_set
+    def getJob(self):
+        return self.job
+    def getResume(self):
+        return self.resume
