@@ -29,8 +29,8 @@ class Matcher(object):
         #Both new resumes and new jobs are uploaded
         if mode == 0:
             resume_list = self.db.getAllResumes()
-            boxes = self.db.getAllMatchBoxes()
             job_list = self.db.getAllJobs()
+            boxes = set()
 
             for job in job_list:
                 for resume in resume_list:
@@ -38,7 +38,7 @@ class Matcher(object):
                     new_match = match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
-            self.db.storeMatchBoxes(boxes)
+            self.db.addMatchBoxes(boxes)
             
         #Only new resumes are uploaded
         elif mode == 1:
@@ -66,7 +66,7 @@ class Matcher(object):
                     new_match = match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
-            self.db.storeMatchBoxes(boxes)
+            self.db.addMatchBoxes(boxes)
 
         else:
             return False
