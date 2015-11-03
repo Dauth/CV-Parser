@@ -14,8 +14,8 @@ class ExperienceParser(IParser):
     def parse(self, node, fieldNode):
         workDuration = ""
         workPosition = ""
-        for index in fieldNode.getExperienceIndex():
-            for line in self.content[index + 1:]:
+        for start, end in fieldNode.getExperienceIndex().items():
+            for line in self.content[start : end - 1]:
                 wordsInList = word_tokenize(line)
                 if len(wordsInList) > 2:#so that we only process everything within the experience header
                     workPositionkReg = self.extractWorkPositionUsingAt(line)

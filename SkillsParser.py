@@ -13,11 +13,10 @@ class SkillsParser(IParser):
         self.extractedContent = []
 
     def parse(self, node, fieldNode):
-        for line in self.content[fieldNode.getSkillsIndex() + 1:]:
-            if line:
-                self.extractedContent.append(line)
-            else:
-                break
+        for start, end in fieldNode.getSkillsIndex().items():
+            for line in self.content[start : end - 1]:
+                if line and 'page' not in line:
+                    self.extractedContent.append(line)
         rake_object = Rake.Rake("nltkstopwords.txt", 1,4,1)
 
         keywordsList = rake_object.run('\n'.join(self.extractedContent))

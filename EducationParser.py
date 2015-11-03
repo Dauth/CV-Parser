@@ -13,24 +13,23 @@ class EducationParser(IParser):
     def parse(self, node, fieldNode):
         educationLevel = ""
         educationLocation = ""
-        for line in self.content[fieldNode.getEducationIndex():]:
-            wordsList = word_tokenize(line)
-            if len(wordsList) > 0:
-                for word in wordsList:
-                    if word in self.getEducationLevel():
-                        educationLevel = line
-                    if word in self.getEducationLocation():
-                        educationLocation = line
-                    if educationLevel and educationLocation:
-                        if educationLevel == educationLocation:
-                            node.addEducation(educationLevel)
-                        else:
-                            node.addEducation(educationLevel, educationLocation)
-                        educationLocation= ""
-                        educationLevel = ""
+        for start, end in fieldNode.getEducationIndex().items():
+            for line in self.content[start : end - 1]:
+                wordsList = word_tokenize(line)
+                if len(wordsList) > 0:
+                    for word in wordsList:
+                        if word in self.getEducationLevel():
+                            educationLevel = line
+                        if word in self.getEducationLocation():
+                            educationLocation = line
+                        if educationLevel and educationLocation:
+                            if educationLevel == educationLocation:
+                                node.addEducation(educationLevel)
+                            else:
+                                node.addEducation(educationLevel, educationLocation)
+                            educationLocation= ""
+                            educationLevel = ""
 
-            else:#hit empty line
-                break
     def getEducationLevel(self):
         return ['o-level', 'a-level', 'ite', 'nitec', 'master\'s', 'master', 'phd', 'diploma', 'doctor', 'msc', 'bachelor']
 
