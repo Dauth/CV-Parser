@@ -8,6 +8,7 @@ class FieldLocator(object):
 
     def __init__(self):
         self.fieldNode = FieldsIndexNode()
+        self.contentHeadingIndex = []
 
     def identifyFields(self, node):
         content = InformationNode.convertStringIntoList(node.getContent())
@@ -36,12 +37,12 @@ class FieldLocator(object):
             if len(wordsInLine) >0 and len(wordsInLine) <= 3:
                 for word in wordsInLine:
                     if word in self.getTopicHeaders():
-                        node.addToContentHeadingIndex(lineNo)
+                        self.contentHeadingIndex.append(lineNo)
     def getStartEndLocationResume(self, node, content):
-        indexOfLast = len(node.getContentHeadingIndex()) - 1
-        for index, item in enumerate(node.getContentHeadingIndex()):
+        indexOfLast = len(self.contentHeadingIndex) - 1
+        for index, item in enumerate(self.contentHeadingIndex):
             if(index + 1 <= indexOfLast):
-                nextIndex = node.getContentHeadingIndex()[index + 1]
+                nextIndex = self.contentHeadingIndex[index + 1]
             else:
                 nextIndex = len(content) - 1
             wordsList = word_tokenize(content[item])
