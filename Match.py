@@ -1,4 +1,3 @@
-from sets import Set
 
 # 1 to 1 match between a resume and a job
 # 1 set of matched words

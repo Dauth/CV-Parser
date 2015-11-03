@@ -1,8 +1,7 @@
-from sets import Set
 import Match
 
 #aggregation of Matches for a job
-class MatchBox(object)
+class MatchBox(object):
     def __init__(self, job):
         self.job = job
         self.matches = set()
