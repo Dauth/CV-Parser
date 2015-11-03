@@ -13,8 +13,8 @@ from FieldLocator import FieldLocator
 
 class ParserFactory(object):
     __parserClassesDict = {"education": EducationParser,
-                    "experience": ExperienceParser,
-                   "skills": SkillsParser}
+                           "experience": ExperienceParser,
+                           "skills": SkillsParser}
 
     @staticmethod
     def createParser(nameOfParser, input):

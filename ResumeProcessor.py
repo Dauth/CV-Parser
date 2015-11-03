@@ -15,6 +15,7 @@ import CustomClassJson
 
 
 class ResumeProcessor(object):
+
     __parserList = ["education", "skills", "experience"]
 
     @staticmethod
@@ -25,5 +26,8 @@ class ResumeProcessor(object):
         for parserType in ResumeProcessor.__parserList:
             parser = ParserFactory.createParser(parserType, node.getContent())
             parser.parse(node, fl.getFieldNode())
+            # print(fl.getFieldNode().getSkillsIndex())
+            # print(fl.getFieldNode().getEducationIndex())
+            # print(fl.getFieldNode().getExperienceIndex())
             
 

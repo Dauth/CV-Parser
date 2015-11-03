@@ -8,6 +8,7 @@ class InformationNode(object):
         self.experience = []
         self.education = []
         self.content = content or []
+        self.contentHeadingIndex = []
 
 
     #resume or job
@@ -19,6 +20,12 @@ class InformationNode(object):
 
     def getContentType(self):
         return self.contentType
+
+    def getContentHeadingIndex(self):
+        return self.contentHeadingIndex
+
+    def addToContentHeadingIndex(self, num):
+        self.contentHeadingIndex.append(num)
 
     def addSkill(self, inputSkill):
         self.skillSet.add(inputSkill)
