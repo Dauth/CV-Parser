@@ -3,11 +3,10 @@ import Match
 import MatchBox
 import ResumeNode
 import JobDescNode
-import CustomClassJson
+import Facade
 
 class Matcher(object):
     db = None
-    count = 0
 
     def __init__(self, db):
         self.db = db
@@ -25,15 +24,49 @@ class Matcher(object):
         new_match = Match(resume, job, s)
         return new_match
 
-    def matchAll(self):
-        #get all resumes from db
-        #get all jobs from db
-        
-        #loop iterating all jobs
-        box = MatchBox(job)
-        #loop iterating all resumes
-        new_match = match(resume, job)
-        box.addMatch(new_match)
-        #end loop
-        #push box to db
-        #end loop
+    def matchAll(self, mode = 0):
+
+        #Both new resumes and new jobs are uploaded
+        if mode == 0:
+            resume_list = self.db.getAllResumes()
+            job_list = self.db.getAllJobs()
+            boxes = set()
+
+            for job in job_list:
+                for resume in resume_list:
+                    box = MatchBox(job)
+                    new_match = match(resume, job)
+                    box.addMatch(new_match)
+                boxes.union(box)
+            self.db.addMatchBoxes(boxes)
+            
+        #Only new resumes are uploaded
+        elif mode == 1:
+            resume_list = self.db.getNewResumes()
+            boxes = self.db.getAllMatchBoxes()
+
+            for b in boxes:
+                for resume in resume_list:
+                    box = b
+                    job = box.getJob()
+                    new_match = match(resume, job)
+                    box.addMatch(new_match)
+                boxes.union(box)
+            self.db.storeMatchBoxes(boxes)
+            
+        #Only new jobs are uploaded
+        elif mode == 2:
+            resume_list = self.db.getAllResumes()
+            job_list = self.db.getNewJobs()
+            boxes = set()
+
+            for job in job_list:
+                for resume in resume_list:
+                    box = MatchBox(job)
+                    new_match = match(resume, job)
+                    box.addMatch(new_match)
+                boxes.union(box)
+            self.db.addMatchBoxes(boxes)
+
+        else:
+            return False
