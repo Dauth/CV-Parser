@@ -1,4 +1,3 @@
-from sets import Set
 import Match
 import MatchBox
 import ResumeNode
