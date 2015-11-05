@@ -14,8 +14,9 @@ class FieldLocator(object):
         content = InformationNode.convertStringIntoList(node.getContent())
         firstIndex = -1
         self.segmentResume(node, content)
+        self.contentHeadingIndex = sorted(set(self.contentHeadingIndex), key=self.contentHeadingIndex.index)
         self.getStartEndLocationResume(node, content)
-
+        print(self.contentHeadingIndex)
         # print(node.getContentHeadingIndex())
 
 
@@ -55,10 +56,10 @@ class FieldLocator(object):
                     self.fieldNode.addEducationIndex(item, nextIndex)
     def getEducationKeywordsList(self):
         return ['education', 'university', 'school', 'polytechnic', 'ite',
-                'qualification', 'academic', 'degree', 'phd', 'study']
+                'academic', 'degree', 'phd', 'study']
 
     def getSkillKeywordList(self):
-        return ['skill', 'skills', 'expertise', 'proficiency', 'technical']
+        return ['skill', 'skills', 'expertise', 'proficiency', 'technical', 'qualification', 'qualifications']
 
     def getExperienceKeywordList(self):
         return ['work', 'experience', 'employment', 'position']
@@ -66,13 +67,16 @@ class FieldLocator(object):
     def getTopicHeaders(self):
         return ["summary", "interests", "experience","projects",
                 "languages","skills","expertise",
-                "education","publications",
-                "achievements",
-                "extracurricular activities",
-                "publications","patent",
+                "education","publications", "achievements",
+                "extracurricular activities", "publications","patent",
                 "referees","responsibilities",
                 "certifications","objective",
-                "portfolio", "interest", "publication"]
+                "portfolio", "interest", "publication",
+                "qualification", "qualifications", "skill",
+                'responsibilities',
+                'paper', 'papers', 'experiences',
+                'activity', 'activities', 'objective', 'history', 'courses', 'course', 'knowledge', 'technical',
+                'proficiency', 'proficiencies', 'requirements', 'requirement', 'location']
 
     def getFieldNode(self):
         return self.fieldNode
