@@ -1,4 +1,5 @@
 __author__ = 'Owner'
+import string
 from InformationNode import InformationNode
 from ResumeNode import ResumeNode
 from JobDescNode import JobDescNode
@@ -35,7 +36,8 @@ class FieldLocator(object):
     def segmentResume(self, node, content):
         for lineNo, line in enumerate(content):
             wordsInLine = word_tokenize(line)
-            if len(wordsInLine) >0 and len(wordsInLine) <= 3:
+            wordsInLine = [word for word in wordsInLine if word not in string.punctuation]
+            if len(wordsInLine) >0 and len(wordsInLine) <= 4:
                 for word in wordsInLine:
                     if word in self.getTopicHeaders():
                         self.contentHeadingIndex.append(lineNo)
@@ -45,7 +47,7 @@ class FieldLocator(object):
             if(index + 1 <= indexOfLast):
                 nextIndex = self.contentHeadingIndex[index + 1]
             else:
-                nextIndex = len(content) - 1
+                nextIndex = len(content)
             wordsList = word_tokenize(content[item])
             for word in wordsList:
                 if word in self.getExperienceKeywordList():
@@ -54,15 +56,22 @@ class FieldLocator(object):
                     self.fieldNode.addSkillsIndex(item, nextIndex)
                 if word in self.getEducationKeywordsList():
                     self.fieldNode.addEducationIndex(item, nextIndex)
+                if word in self.getLanguageKeywordsList():
+                    self.fieldNode.addLanguageIndex(item, nextIndex)
+
+    def getLanguageKeywordsList(self):
+        return ['languages']
     def getEducationKeywordsList(self):
         return ['education', 'university', 'school', 'polytechnic', 'ite',
-                'academic', 'degree', 'phd', 'study']
+                'academic', 'degree', 'phd', 'study', 'requirements']
 
     def getSkillKeywordList(self):
-        return ['skill', 'skills', 'expertise', 'proficiency', 'technical', 'qualification', 'qualifications']
+        return ['skill', 'skills', 'expertise',
+                'proficiency', 'technical', 'qualification',
+                'qualifications', 'responsibilities']
 
     def getExperienceKeywordList(self):
-        return ['work', 'experience', 'employment', 'position']
+        return ['work', 'experience', 'employment', 'position', 'requirements']
 
     def getTopicHeaders(self):
         return ["summary", "interests", "experience","projects",
@@ -73,7 +82,6 @@ class FieldLocator(object):
                 "certifications","objective",
                 "portfolio", "interest", "publication",
                 "qualification", "qualifications", "skill",
-                'responsibilities',
                 'paper', 'papers', 'experiences',
                 'activity', 'activities', 'objective', 'history', 'courses', 'course', 'knowledge', 'technical',
                 'proficiency', 'proficiencies', 'requirements', 'requirement', 'location']

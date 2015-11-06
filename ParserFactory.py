@@ -9,12 +9,14 @@ from FieldsIndexNode import  FieldsIndexNode
 from EducationParser import EducationParser
 from SkillsParser import SkillsParser
 from ExperienceParser import ExperienceParser
+from LanguageParser import LanguageParser
 from FieldLocator import FieldLocator
 
 class ParserFactory(object):
     __parserClassesDict = {"education": EducationParser,
                            "experience": ExperienceParser,
-                           "skills": SkillsParser}
+                           "skills": SkillsParser,
+                           "language": LanguageParser}
 
     @staticmethod
     def createParser(nameOfParser, input):

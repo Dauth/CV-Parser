@@ -6,20 +6,31 @@ from ResumeNode import ResumeNode
 from JobDescNode import JobDescNode
 from FieldsIndexNode import FieldsIndexNode
 import Rake
+from DBpediaSpotlight import annotate
 
 class SkillsParser(IParser):
     def __init__(self, input):
         self.content = InformationNode.convertStringIntoList(input)
-        self.extractedContent = []
+        self.extractedContent = set()
 
     def parse(self, node, fieldNode):
-        for start, end in fieldNode.getSkillsIndex().items():
-            for line in self.content[start : end - 1]:
-                if line and 'page' not in line:
-                    self.extractedContent.append(line)
-        rake_object = Rake.Rake("nltkstopwords.txt", 1,4,1)
+        if bool(fieldNode.getSkillsIndex()):
+            for start, end in fieldNode.getSkillsIndex().items():
+                for line in self.content[start : end]:
+                    if line and 'page' not in line:
+                        self.extractedContent.add(line)
+            listString = "\n".join(line for line in self.extractedContent)
+            self.extractedContent = annotate(listString)
+            for line in self.extractedContent:
+                if line not in self.getSkillKeywordList():
+                    node.addSkill(line)
 
-        keywordsList = rake_object.run('\n'.join(self.extractedContent))
-
-        for keyword in keywordsList:
-            node.addSkill(keyword[0])
+        # for line in self.extractedContent:
+        #     try:
+        #         result = annotate(line)
+        #         for word in result:
+        #             node.addSkill(word)
+        #     except:
+        #         print('Error in annotating {}'.format(line))
+    def getSkillKeywordList(self):
+        return ['skill', 'skills', 'expertise', 'proficiency', 'technical', 'qualification', 'qualifications', 'responsibilities']
