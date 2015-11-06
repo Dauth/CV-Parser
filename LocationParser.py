@@ -7,23 +7,26 @@ from FieldsIndexNode import FieldsIndexNode
 from nltk import word_tokenize
 import re
 from DBpediaSpotlight import annotate
+import geocoder
+from CountryNode import CountryNode
 
-class LanguageParser(IParser):
+class LocationParser(IParser):
     def __init__(self, input):
         self.content = InformationNode.convertStringIntoList(input)
         self.extractedContent = set()
     def parse(self, node, fieldNode):
-        if bool(fieldNode.getLanguageIndex()):
-            for start, end in fieldNode.getLanguageIndex().items():
+        if bool(fieldNode.getLocationIndex()):
+            for start, end in fieldNode.getLocationIndex().items():
                 for line in self.content[start : end]:
-                    self.extractedContent.add(line)
+                    if line:
+                        self.extractedContent.add(line)
 
             listString = "\n".join(line for line in self.extractedContent)
-            if len(self.extractedContent) > 0:
-                self.extractedContent = annotate(listString)
-                for line in self.extractedContent:
-                    if line.get('surfaceForm') not in self.getLanguageKeywordsList() and 'language' in line.get('types').lower():
-                        node.addLanguage(line.get('surfaceForm'))
+            geo = geocoder.google(listString)
+            if geo is not None:
+                countryNode = CountryNode(geo.json, geo.country_long.lower(), geo.city.lower())
+                node.addLocation(countryNode)
+
     def getLanguageKeywordsList(self):
         return ['languages']
 

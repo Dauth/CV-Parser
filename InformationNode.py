@@ -9,6 +9,7 @@ class InformationNode(object):
         self.education = []
         self.content = content or []
         self.language = []
+        self.location = None
 
     #resume or job
     def setContentTypeAsResume(self):
@@ -48,6 +49,14 @@ class InformationNode(object):
         return self.language
     def addLanguage(self, language):
         self.language.append(language)
+
+    def getLocation(self):
+        return self.location
+    def addLocation(self, location):
+        self.location = location
+    def isLocationPresent(self):
+        return bool(self.location)
+
 
     @staticmethod
     def convertStringIntoList(inputText):

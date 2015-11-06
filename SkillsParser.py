@@ -20,7 +20,7 @@ class SkillsParser(IParser):
                     if line and 'page' not in line:
                         self.extractedContent.add(line)
             listString = "\n".join(line for line in self.extractedContent)
-            self.extractedContent = annotate(listString)
+            self.extractedContent = [i.get('surfaceForm') for i in annotate(listString)]
             for line in self.extractedContent:
                 if line not in self.getSkillKeywordList():
                     node.addSkill(line)

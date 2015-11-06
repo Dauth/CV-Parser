@@ -32,7 +32,7 @@ class ExperienceParser(IParser):
         for line in self.extractedContent:
             wordsInList = word_tokenize(line)
             try:
-                annotatedList = annotate(line)
+                annotatedList = [i.get('surfaceForm') for i in annotate(line)]
                 yearIndex = None
                 year = 'year'
                 years = 'years'

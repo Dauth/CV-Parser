@@ -7,6 +7,7 @@ class FieldsIndexNode(object):
         self.skillsIndex = dict()
         self.experienceIndex = dict()
         self.languageIndex = dict()
+        self.locationIndex = dict()
 
     def addEducationIndex(self, startIndex, endIndex):
         self.educationIndex[startIndex] = endIndex
@@ -35,3 +36,10 @@ class FieldsIndexNode(object):
         return self.languageIndex
     def isLanguageIndexPresent(self):
         return bool(self.languageIndex)
+
+    def addLocationIndex(self, startIndex, endIndex):
+        self.locationIndex[startIndex] = endIndex
+    def getLocationIndex(self):
+        return self.locationIndex
+    def isLocationIndexPresent(self):
+        return bool(self.locationIndex)
