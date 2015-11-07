@@ -50,19 +50,14 @@ include 'db.php';
                   //Answered by : Tom van der Woerdt, http://stackoverflow.com/users/377037/tom-van-der-woerdt
                   
                   // This is the data you want to pass to Python
+              
         $contentName = $name;
-              $name = 'Omar';
-              $hp = '3333';
-              $email = 'aaada@fsdfsdf.com';
-              
-              
-              $result = exec('python CreateNewResume.py '.$name.' '.$hp.' '.$email.' '.$contentName.' '.json_encode($mainJSON));
+              $name = $_POST['nameSeeker'];
+              $hp = $_POST['hpSeeker'];
+              $email = $_POST['emailSeeker'];
 
-// Decode the result
-$resultData = json_decode($result, true);
+              echo exec('python3 CreateNewResume.py '.$name.' '.$hp.' '.$email.' '.$contentName.' '.json_encode($mainJSON));
 
-// This will contain: array('status' => 'Yes!')
-var_dump($resultData);
               
                 echo pg_last_error();
               

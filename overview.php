@@ -145,21 +145,18 @@ textarea[disabled]
 {
     text-align:center;
 }
-input[readonly]
+input[type=text]
 {
     background-color: white;
     cursor: text;
      width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 20px;
 box-shadow: none;
     overflow: auto;
+    border-spacing: 8px;
   border-style: 1px solid;
 }
-input[disabled]
-{
-    opacity: 0.4;
-}
+
 .classnotes::-webkit-file-upload-button {
   visibility: hidden;
 }
@@ -188,7 +185,7 @@ input[disabled]
     <div class="row-fluid">
      
     <div class="span12">
-        <h1>Upload your resume</h1 >
+        <h1>Apply Now !</h1 >
 
 
         </div>
@@ -198,9 +195,11 @@ input[disabled]
      
     <div class="span6">
         <form id="uploadimage" action="fileUpload.php" method="post" enctype="multipart/form-data">
-   
+   <input type="text" id="nameSeeker" name="nameSeeker" placeholder="Your name" value=""/><br />
+            <input type="text" name="emailSeeker" id="emailSeeker" placeholder="Your email" value=""/><br />
+            <input  type="text" id="hpSeeker" name="hpSeeker" placeholder="Your HP" value=""/><br />
             <input type="file" id="actual" name="classnotes" value="" hidden/><br />
-            
+             
             
    <p><input type="submit" name="Submit" value="Submit" id="realsub" hidden/></p>
 </form><div class="classnotes"> </div><br/><div id="fileNama"></div><br/>   <input type="button" id="fakebtn" name="btn" class="btn-style" value="Submit" />
@@ -275,8 +274,6 @@ input[disabled]
         //http://stackoverflow.com/questions/2189615/how-to-get-file-name-when-user-select-a-file-via-input-type-file
         $('body').on('change', '#actual', function (e) {
                $('#fileNama').html($(this).val().replace(/.*[\/\\]/, ''));
-
-
         });
         
         

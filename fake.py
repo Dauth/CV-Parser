@@ -1,3 +1,3 @@
-hello = "hello"
-world = "world"
-print hello + " " + world
+import sys
+
+print (sys.argv[2])
