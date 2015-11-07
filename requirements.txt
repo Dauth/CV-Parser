@@ -1,0 +1,3 @@
+pyspotlight>=0.6.5.2
+nltk>=3.0.3
+geocoder>=1.6.4
