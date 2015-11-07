@@ -25,7 +25,7 @@ class FacadeStub(object):
 	def getNewJobs(self):
 		new_jobs = self.db['new_jobs']
 		self.db['new_jobs'] = set()
-		self,db['jobs'].union(new_jobs)
+		self.db['jobs'].union(new_jobs)
 		return new_jobs
 
 	def getNewResumes(self):

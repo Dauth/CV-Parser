@@ -42,7 +42,7 @@ class Matcher(object):
         #Only new resumes are uploaded
         elif mode == 1:
             resume_list = self.db.getNewResumes()
-            boxes = self.db.getAllMatchBoxes()
+            boxes = self.db.getMatchBoxes()
 
             for b in boxes:
                 for resume in resume_list:
