@@ -22,3 +22,6 @@ class JobDescNode(InformationNode):
     def getImptKeywords(self):
         return self.importantKeywords
 
+
+    def isComputerScience(self):
+        return bool(word for word in self.getEducation() if word == 'computer science')

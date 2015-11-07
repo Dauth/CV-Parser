@@ -16,7 +16,11 @@ import CustomClassJson
 
 class ResumeProcessor(object):
 
-    __parserList = ["education", "skills", "experience"]
+    __parserList = ["education",
+                    "skills",
+                    "experience",
+                    "language",
+                    "location"]
 
     @staticmethod
     def construct(node):
