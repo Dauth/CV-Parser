@@ -1,4 +1,3 @@
-from sets import Set
 from collections import defaultdict
 import json
 import MatchBox
@@ -26,7 +25,7 @@ class Scorer(object):
                 #for each word in each match object
                 for curWord in wordSet:
                     score += 1
-                results[mb.job].append((curMatch.resume, score))
+                results[mb.job].append((curMatch.resume.getName(), score))
             results[mb.job].sort(key=lambda x: x[1], reverse = True)
             emptyBox = MatchBox(mb.job)
             emptyMatchBoxes.add(emptyBox)
