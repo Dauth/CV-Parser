@@ -1,7 +1,7 @@
 <?php
-$item='example';
-$result = exec('python CreateNewJob.py '.$item.'');
+$mainJSON=array();
 
-echo $result;
+echo exec("python3 CreateNewResume.py ds sdsd sds sds {} 2>&1");
+
 
 ?>
