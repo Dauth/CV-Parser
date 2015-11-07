@@ -1,8 +1,8 @@
-import Match
-import MatchBox
-import ResumeNode
-import JobDescNode
-import Facade
+from Match import Match
+from MatchBox import MatchBox
+from ResumeNode import ResumeNode
+from JobDescNode import JobDescNode
+from Facade import Facade
 
 class Matcher(object):
     db = None

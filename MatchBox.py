@@ -1,4 +1,4 @@
-import Match
+from Match import Match
 
 #aggregation of Matches for a job
 class MatchBox(object):
