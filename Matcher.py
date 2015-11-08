@@ -30,14 +30,13 @@ class Matcher(object):
 
         #Both new resumes and new jobs are uploaded
         if mode == 0:
-            resume_list = self.db.getAllResumes()
-            job_list = self.db.getAllJobs()
+            resume_list = self.db.getNewResumes()
+            job_list = self.db.getNewJobs()
             boxes = set()
 
             for job in job_list:
+                box = MatchBox(job)
                 for resume in resume_list:
-                    print(type(job))
-                    box = MatchBox(job)
                     new_match = match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
@@ -49,10 +48,9 @@ class Matcher(object):
             boxes = self.db.getMatchBoxes()
 
             for b in boxes:
+                box = b
                 for resume in resume_list:
-                    box = b
                     job = box.getJob()
-                    print(type(job))
                     new_match = self.match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
@@ -65,8 +63,8 @@ class Matcher(object):
             boxes = set()
 
             for job in job_list:
+                box = MatchBox(job)
                 for resume in resume_list:
-                    box = MatchBox(job)
                     new_match = match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
