@@ -13,7 +13,7 @@ class Scorer(object):
     def calculateScore(self):
         results = defaultdict(list)
         #get all MatchBoxes from DB and put in a list
-        matchBoxes = db.getMatchBoxes()
+        matchBoxes = self.db.getMatchBoxes()
         emptyMatchBoxes = set()
         #for all matchBoxes in matchBoxes
         for mb in matchBoxes:
@@ -30,8 +30,8 @@ class Scorer(object):
             emptyBox = MatchBox(mb.job)
             emptyMatchBoxes.add(emptyBox)
 
-        db.storeMatchBoxes(emptyMatchBoxes)
-        db.storeResults(results)
+        self.db.storeMatchBoxes(emptyMatchBoxes)
+        self.db.storeResults(results)
         #insert results to db
         '''
         results will be dictionary, key will be job and value will
