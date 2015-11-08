@@ -1,8 +1,8 @@
-import Match
-import MatchBox
-import ResumeNode
-import JobDescNode
-import Facade
+from Match import Match
+from MatchBox import MatchBox
+from ResumeNode import ResumeNode
+from JobDescNode import JobDescNode
+from Facade import Facade
 
 class Matcher(object):
     db = None
@@ -42,7 +42,7 @@ class Matcher(object):
         #Only new resumes are uploaded
         elif mode == 1:
             resume_list = self.db.getNewResumes()
-            boxes = self.db.getAllMatchBoxes()
+            boxes = self.db.getMatchBoxes()
 
             for b in boxes:
                 for resume in resume_list:
