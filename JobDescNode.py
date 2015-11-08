@@ -9,14 +9,13 @@ class JobDescNode(InformationNode):
         super(JobDescNode, self).__init__(content)
         self.setContentTypeAsJob()
         self.importantKeywords = []
-        self.addImptKeyword(keyword)
+        self.importantKeywords = self.addImptKeyword(keyword)
+
 
 
     def addImptKeyword(self, keyword):
-        if keyword is not None and isinstance(keyword, str):
-                self.importantKeywords += self.convertStringIntoList(keyword)
-        elif keyword is not None and isinstance(keyword, list):
-                self.importantKeywords += keyword
+        return self.convertStringIntoList(keyword)
+
 
 
     def getImptKeywords(self):

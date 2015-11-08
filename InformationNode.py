@@ -60,4 +60,4 @@ class InformationNode(object):
 
     @staticmethod
     def convertStringIntoList(inputText):
-        return inputText[0].lower().split('\n')
+        return [line for line in inputText[0].lower().split('\n') if line]
