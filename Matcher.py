@@ -13,13 +13,16 @@ class Matcher(object):
     def match(self, resume, job):
         s = set()
         #do matching
-        keywords = job.getImptKeywords()
-        qualifications = resume.getQualification()
-        education = resume.getEducation()
+        #keywords = job.getImptKeywords()
+        required_experience = set(job.getExperience())
+        required_education = set(job.getEducation())
+        required_skills = job.getSkills()
+        experience = set(resume.getExperience())
+        education = set(resume.getEducation())
         skills = resume.getSkills()
-        s.union(keywords.intersection(qualifications))
-        s.union(keywords.intersection(education))
-        s.union(keywords.intersection(skills))
+        s.update(required_experience.intersection(experience))
+        s.update(required_education.intersection(education))
+        s.update(required_skills.intersection(skills))
         new_match = Match(resume, job, s)
         return new_match
 
@@ -27,16 +30,16 @@ class Matcher(object):
 
         #Both new resumes and new jobs are uploaded
         if mode == 0:
-            resume_list = self.db.getAllResumes()
-            job_list = self.db.getAllJobs()
+            resume_list = self.db.getNewResumes()
+            job_list = self.db.getNewJobs()
             boxes = set()
 
             for job in job_list:
+                box = MatchBox(job)
                 for resume in resume_list:
-                    box = MatchBox(job)
                     new_match = self.match(resume, job)
                     box.addMatch(new_match)
-                boxes.union(box)
+                boxes.add(box)
             self.db.addMatchBoxes(boxes)
             
         #Only new resumes are uploaded
@@ -45,12 +48,12 @@ class Matcher(object):
             boxes = self.db.getMatchBoxes()
 
             for b in boxes:
+                box = b
                 for resume in resume_list:
-                    box = b
                     job = box.getJob()
                     new_match = self.match(resume, job)
                     box.addMatch(new_match)
-                boxes.union(box)
+                boxes.add(box)
             self.db.storeMatchBoxes(boxes)
             
         #Only new jobs are uploaded
@@ -60,11 +63,11 @@ class Matcher(object):
             boxes = set()
 
             for job in job_list:
+                box = MatchBox(job)
                 for resume in resume_list:
-                    box = MatchBox(job)
                     new_match = self.match(resume, job)
                     box.addMatch(new_match)
-                boxes.union(box)
+                boxes.add(box)
             self.db.addMatchBoxes(boxes)
 
         else:
