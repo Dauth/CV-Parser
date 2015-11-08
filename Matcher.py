@@ -21,6 +21,9 @@ class Matcher(object):
         s.union(keywords.intersection(education))
         s.union(keywords.intersection(skills))
         new_match = Match(resume, job, s)
+        print('ff')
+        print(s)
+        print('ff')
         return new_match
 
     def matchAll(self, mode = 0):
@@ -33,6 +36,7 @@ class Matcher(object):
 
             for job in job_list:
                 for resume in resume_list:
+                    print(type(job))
                     box = MatchBox(job)
                     new_match = match(resume, job)
                     box.addMatch(new_match)
@@ -48,7 +52,8 @@ class Matcher(object):
                 for resume in resume_list:
                     box = b
                     job = box.getJob()
-                    new_match = match(resume, job)
+                    print(type(job))
+                    new_match = self.match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
             self.db.storeMatchBoxes(boxes)
