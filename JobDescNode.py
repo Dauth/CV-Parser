@@ -22,4 +22,7 @@ class JobDescNode(InformationNode):
 
 
     def isComputerScience(self):
-        return bool(word for word in self.getEducation() if word == 'computer science')
+        return bool(key for key, value in self.getEducation().items() if "computer science" in key)
+
+    def getTypeOfEducation(self):
+        return self.getEducation()

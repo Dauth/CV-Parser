@@ -37,7 +37,7 @@ class EducationParser(IParser):
                 if line in self.getEducationLevel() and line not in self.getIgnoredKeywords():
                     educationType = line
                 if line not in self.getEducationLevel() and line not in self.getIgnoredKeywords():
-                    node.addEducation(educationType +" in "+ line)
+                    node.addEducation(educationType +" in "+ line, None)
         except:
             pass
 

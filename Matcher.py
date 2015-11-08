@@ -34,7 +34,7 @@ class Matcher(object):
             for job in job_list:
                 for resume in resume_list:
                     box = MatchBox(job)
-                    new_match = match(resume, job)
+                    new_match = self.match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
             self.db.addMatchBoxes(boxes)
@@ -48,7 +48,7 @@ class Matcher(object):
                 for resume in resume_list:
                     box = b
                     job = box.getJob()
-                    new_match = match(resume, job)
+                    new_match = self.match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
             self.db.storeMatchBoxes(boxes)
@@ -62,7 +62,7 @@ class Matcher(object):
             for job in job_list:
                 for resume in resume_list:
                     box = MatchBox(job)
-                    new_match = match(resume, job)
+                    new_match = self.match(resume, job)
                     box.addMatch(new_match)
                 boxes.union(box)
             self.db.addMatchBoxes(boxes)

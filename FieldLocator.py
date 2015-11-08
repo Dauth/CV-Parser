@@ -5,6 +5,7 @@ from ResumeNode import ResumeNode
 from JobDescNode import JobDescNode
 from FieldsIndexNode import FieldsIndexNode
 from nltk import word_tokenize
+from nltk.corpus import stopwords
 class FieldLocator(object):
 
     def __init__(self):
@@ -36,7 +37,7 @@ class FieldLocator(object):
     def segmentResume(self, node, content):
         for lineNo, line in enumerate(content):
             wordsInLine = word_tokenize(line)
-            wordsInLine = [word for word in wordsInLine if word not in string.punctuation]
+            wordsInLine = [word for word in wordsInLine if word not in string.punctuation and word not in stopwords.words('english')]
             if len(wordsInLine) >0 and len(wordsInLine) <= 4:
                 for word in wordsInLine:
                     if word in self.getTopicHeaders():

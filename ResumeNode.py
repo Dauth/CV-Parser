@@ -5,7 +5,6 @@ class ResumeNode(InformationNode):
 
     def __init__(self, name, hpNumber, email, contentId, content = None):
         super(ResumeNode, self).__init__(contentId, content)
-        self.education = dict()#overide initial education to dict
         self.name = name
         self.hpNumber = hpNumber
         self.email = email
@@ -28,12 +27,6 @@ class ResumeNode(InformationNode):
 
     def getEmail(self):
         return  self.email
-
-    def addEducation(self, educationLevel, educationLoc = None):#overide
-        self.education[educationLevel] = educationLoc
-
-    def getEducation(self):#overide
-        return self.education
 
     def isBachelorDegree(self):
         return bool(k for k, v in self.education.items() if 'bachelor' in k)

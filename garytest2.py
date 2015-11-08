@@ -27,16 +27,18 @@ def test(node):
     node.setName('john')
 def main():
 
-    ###uncomment for resume
-    # resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\DesmondLim2.json')
-    # print(resume)
-    # personA = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
-
-    ###uncomment for job desc
-    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\sampleJob2.json')
+    # ###uncomment for resume
+    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\DesmondLim2.json')
     print(resume)
-    personA = JobDescNode(resume)
+    personA = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
 
+    ##uncomment for job desc
+    # resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\sampleJob.json')
+    # keywords = openFile('D:\install location\pycharm\python\\nltkProj\data\\keywords.json')
+    # print(resume)
+    #
+    # personA = JobDescNode("545646", resume, keywords)
+    # print(personA.getImptKeywords())
 
     ResumeProcessor.construct(personA)
     print("----- SKILLS -----")
@@ -50,19 +52,27 @@ def main():
     for i in personA.getExperience():
         print(i.workPosition)
         print(i.workDuration)
+    print("----- Location -----")
+    print(personA.getLocation())
+    print(personA.getLocation().getAddress())
+    print(personA.getLocation().getCountry())
+    print(personA.getLocation().getCity())
 
-
-    # ## FOR PRINTING OUT THE LINES IN CONTENT
+    #### FOR PRINTING OUT THE LINES IN CONTENT
     # for i, j in enumerate(InformationNode.convertStringIntoList(personA.getContent())):
     #     print('------------------------------- ',i)
     #     print(j)
-    #
+
     # temp = CustomClassJson.encodeClassToJson(personA)
     # with open('sampleJob2.json', 'w') as outfile:
     #     json.dump(temp, outfile)
 
-
-
+    tester1 = CustomClassJson.encodeClassToJson(personA)
+    print(tester1)
+    # tester = openFile("D:\install location\pycharm\python\\nltkProj\qy\sampleJob2.json")
+    # print(tester)
+    # blah = CustomClassJson.decodeJsonToClass(tester)
+    # print(blah.getEducation())
 
 
 

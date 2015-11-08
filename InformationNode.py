@@ -7,7 +7,7 @@ class InformationNode(object):
         self.contentType = None
         self.skillSet = set()
         self.experience = []
-        self.education = []
+        self.education = dict()
         self.content = content or []
         self.language = []
         self.location = None
@@ -40,8 +40,8 @@ class InformationNode(object):
     def getExperience(self):
         return self.experience
 
-    def addEducation(self, education):
-        self.education.append(education)
+    def addEducation(self, educationLevel, educationLoc = None):
+        self.education[educationLevel] = educationLoc
 
     def getEducation(self):
         return self.education
