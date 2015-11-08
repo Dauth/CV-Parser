@@ -3,13 +3,12 @@ from InformationNode import InformationNode
 
 class ResumeNode(InformationNode):
 
-    def __init__(self, name, hpNumber, email, contentID, content = None):
-        super(ResumeNode, self).__init__(content)
+    def __init__(self, name, hpNumber, email, contentId, content = None):
+        super(ResumeNode, self).__init__(contentId, content)
         self.education = dict()#overide initial education to dict
         self.name = name
         self.hpNumber = hpNumber
         self.email = email
-        self.contentID = contentID
         self.setContentTypeAsResume()
 
     def setName(self, name):

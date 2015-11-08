@@ -2,7 +2,8 @@ __author__ = 'Owner'
 
 class InformationNode(object):
 
-    def __init__(self, content = None):
+    def __init__(self, contentId, content = None):
+        self.contentId = contentId
         self.contentType = None
         self.skillSet = set()
         self.experience = []
@@ -20,6 +21,12 @@ class InformationNode(object):
 
     def getContentType(self):
         return self.contentType
+
+    def getContentId(self):
+        return self.contentId
+
+    def setContentId(self, contentId):
+        self.contentId = contentId
 
     def addSkill(self, inputSkill):
         self.skillSet.add(inputSkill)
