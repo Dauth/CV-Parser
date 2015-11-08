@@ -1,6 +1,6 @@
 from collections import defaultdict
 import json
-import MatchBox
+from MatchBox import MatchBox
 import Match
 import Facade
 

@@ -15,7 +15,6 @@ class EducationParser(IParser):
         self.extractedContent = set()
 
     def parse(self, node, fieldNode):
-        print(fieldNode.getEducationIndex())
         if bool(fieldNode.getEducationIndex()):
             if(node.getContentType() == 'RESUME'):
                 self.extractEducationFromResume(node, fieldNode)

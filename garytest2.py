@@ -28,17 +28,17 @@ def test(node):
 def main():
 
     # ###uncomment for resume
-    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\DesmondLim2.json')
-    print(resume)
-    personA = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
+    # resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\DesmondLim2.json')
+    # print(resume)
+    # personA = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
 
     ##uncomment for job desc
-    # resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\sampleJob.json')
-    # keywords = openFile('D:\install location\pycharm\python\\nltkProj\data\\keywords.json')
-    # print(resume)
-    #
-    # personA = JobDescNode("545646", resume, keywords)
-    # print(personA.getImptKeywords())
+    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\sampleJob.json')
+    keywords = openFile('D:\install location\pycharm\python\\nltkProj\data\\keywords.json')
+    print(resume)
+
+    personA = JobDescNode("545646", resume, keywords)
+    print(personA.getImptKeywords())
 
     ResumeProcessor.construct(personA)
     print("----- SKILLS -----")
@@ -50,7 +50,7 @@ def main():
     print("----- Experience -----")
     print(personA.getExperience())
     for i in personA.getExperience():
-        print(i.workPosition)
+        print(i.workPositionOrExp)
         print(i.workDuration)
     print("----- Location -----")
     print(personA.getLocation())

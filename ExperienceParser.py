@@ -17,6 +17,7 @@ class ExperienceParser(IParser):
         if bool(fieldNode.getExperienceIndex()):
             if node.getContentType() == 'RESUME':
                 self.extractFromResume(node, fieldNode)
+                self.extractFromJob(node, fieldNode)
             else:
                 self.extractFromJob(node, fieldNode)
 
@@ -24,11 +25,12 @@ class ExperienceParser(IParser):
     def extractFromJob(self, node, fieldNode):
         for start, end in fieldNode.getExperienceIndex().items():
             for line in self.content[start : end]:
+                if 'work experience' == line:#don't process work experience, only process experience
+                    break
                 wordsInList = word_tokenize(line)
-                if len(wordsInList) > 2:#so that we only process everything within the experience header
-                    for word in wordsInList:
-                        if word in self.getExperienceKeywordList():# to tackle solely requirements section as there can be a mixture of key requirements and skills section
-                            self.extractedContent.add(line)
+                for word in wordsInList:
+                    if word in self.getExperienceKeywordList():# to tackle solely requirements section as there can be a mixture of key requirements and skills section
+                        self.extractedContent.add(line)
         for line in self.extractedContent:
             wordsInList = word_tokenize(line)
             try:
