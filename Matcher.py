@@ -13,17 +13,17 @@ class Matcher(object):
     def match(self, resume, job):
         s = set()
         #do matching
-        keywords = job.getImptKeywords()
-        qualifications = resume.getQualification()
-        education = resume.getEducation()
+        #keywords = job.getImptKeywords()
+        required_experience = set(job.getExperience())
+        required_education = set(job.getEducation())
+        required_skills = job.getSkills()
+        experience = set(resume.getExperience())
+        education = set(resume.getEducation())
         skills = resume.getSkills()
-        s.update(keywords.intersection(qualifications))
-        s.update(keywords.intersection(education))
-        s.update(keywords.intersection(skills))
+        s.update(required_experience.intersection(experience))
+        s.update(required_education.intersection(education))
+        s.update(required_skills.intersection(skills))
         new_match = Match(resume, job, s)
-        print('ff')
-        print(s)
-        print('ff')
         return new_match
 
     def matchAll(self, mode = 0):
