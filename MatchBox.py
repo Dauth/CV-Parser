@@ -11,3 +11,4 @@ class MatchBox(object):
         return self.matches
     def getJob(self):
         return self.job
+
