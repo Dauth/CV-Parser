@@ -5,6 +5,7 @@ from ResumeNode import ResumeNode
 from JobDescNode import JobDescNode
 from FieldsIndexNode import FieldsIndexNode
 from nltk import word_tokenize
+from nltk.corpus import stopwords
 class FieldLocator(object):
 
     def __init__(self):
@@ -36,7 +37,7 @@ class FieldLocator(object):
     def segmentResume(self, node, content):
         for lineNo, line in enumerate(content):
             wordsInLine = word_tokenize(line)
-            wordsInLine = [word for word in wordsInLine if word not in string.punctuation]
+            wordsInLine = [word for word in wordsInLine if word not in string.punctuation and word not in stopwords.words('english')]
             if len(wordsInLine) >0 and len(wordsInLine) <= 4:
                 for word in wordsInLine:
                     if word in self.getTopicHeaders():
@@ -61,8 +62,9 @@ class FieldLocator(object):
                 if word in self.getLocationKeywordList():
                     self.fieldNode.addLocationIndex(item, nextIndex)
 
+        # print('------------>',self.fieldNode.getSkillsIndex())
     def getLanguageKeywordsList(self):
-        return ['languages']
+        return ['languages', "language"]
     def getEducationKeywordsList(self):
         return ['education', 'university', 'school', 'polytechnic', 'ite',
                 'academic', 'degree', 'phd', 'study', 'requirements']
@@ -89,8 +91,8 @@ class FieldLocator(object):
                 "interest", "publication",
                 "qualification", "qualifications", "skill",
                 'paper', 'papers', 'experiences',
-                'activity', 'activities', 'objective', 'history', 'courses', 'course', 'knowledge', 'technical',
-                'proficiency', 'proficiencies', 'requirements', 'requirement', 'location', 'description']
+                'activity', 'activities', 'objective', 'history', 'courses', 'course', 'technical',
+                'proficiency', 'proficiencies', 'requirements', 'requirement', 'location', 'description', "language"]
 
     def getFieldNode(self):
         return self.fieldNode

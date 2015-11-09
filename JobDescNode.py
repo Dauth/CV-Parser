@@ -5,18 +5,16 @@ from InformationNode import InformationNode
 
 class JobDescNode(InformationNode):
 
-    def __init__(self, content, keyword = None):
-        super(JobDescNode, self).__init__(content)
+    def __init__(self, contentId, content, keyword = None):
+        super(JobDescNode, self).__init__(contentId, content)
         self.setContentTypeAsJob()
-        self.importantKeywords = []
-        self.addImptKeyword(keyword)
+        self.importantKeywords = self.addImptKeyword(keyword)
+
 
 
     def addImptKeyword(self, keyword):
-        if keyword is not None and isinstance(keyword, str):
-                self.importantKeywords += self.convertStringIntoList(keyword)
-        elif keyword is not None and isinstance(keyword, list):
-                self.importantKeywords += keyword
+        return self.convertStringIntoList(keyword)
+
 
 
     def getImptKeywords(self):
@@ -24,4 +22,5 @@ class JobDescNode(InformationNode):
 
 
     def isComputerScience(self):
-        return bool(word for word in self.getEducation() if word == 'computer science')
+        return bool(key for key, value in self.getEducation().items() if "computer science" in key)
+

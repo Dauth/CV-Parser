@@ -15,7 +15,6 @@ class EducationParser(IParser):
         self.extractedContent = set()
 
     def parse(self, node, fieldNode):
-        print(fieldNode.getEducationIndex())
         if bool(fieldNode.getEducationIndex()):
             if(node.getContentType() == 'RESUME'):
                 self.extractEducationFromResume(node, fieldNode)
@@ -37,7 +36,7 @@ class EducationParser(IParser):
                 if line in self.getEducationLevel() and line not in self.getIgnoredKeywords():
                     educationType = line
                 if line not in self.getEducationLevel() and line not in self.getIgnoredKeywords():
-                    node.addEducation(educationType +" in "+ line)
+                    node.addEducation(educationType +" in "+ line, None)
         except:
             pass
 

@@ -1,4 +1,3 @@
-
 import ResumeNode
 import JobDescNode
 from CustomClassJson import decodeJsonToClass
@@ -23,13 +22,11 @@ class Facade(object):
             sys.exit(1)
         finally:
             if con:
-                cur.execute("SELECT resume_data FROM resume WHERE resume_isprocessed = %s",('f'));
+                cur.execute("SELECT resume_data::text FROM resume WHERE resume_isprocessed = %s",('f'));
                 rows = cur.fetchall()
                 for row in rows:
-                    pp = str(row[0]).replace("u'", '"')
-                    pp = pp.replace("'", '"')
-                    pp = pp.replace('\\n', ' ')
-                    pp = pp.replace('\\', ' ')
+                    pp = str(row[0])
+                    print (pp)
                     s.append(decodeJsonToClass(pp))
             con.close()
             return s
@@ -45,13 +42,11 @@ class Facade(object):
             sys.exit(1)
         finally:
             if con:
-                cur.execute("SELECT resume_data FROM resume");
+                cur.execute("SELECT resume_data::text  FROM resume");
                 rows = cur.fetchall()
                 for row in rows:
-                    pp = str(row[0]).replace("u'", '"')
-                    pp = pp.replace("'", '"')
-                    pp = pp.replace('\\n', ' ')
-                    pp = pp.replace('\\', ' ')
+                    pp = str(row[0])
+                    print (pp)
                     s.append(decodeJsonToClass(pp))
             con.close()
             return s
@@ -67,13 +62,11 @@ class Facade(object):
             sys.exit(1)
         finally:
             if con:
-                cur.execute("SELECT job_data FROM job WHERE job_isprocessed = %s",('f'));
+                cur.execute("SELECT job_data::text  FROM job WHERE job_isprocessed = %s",('f'));
                 rows = cur.fetchall()
                 for row in rows:
-                    pp = str(row[0]).replace("u'", '"')
-                    pp = pp.replace("'", '"')
-                    pp = pp.replace('\\n', ' ')
-                    pp = pp.replace('\\', ' ')
+                    pp = str(row[0])
+                    print (pp)
                     s.append(decodeJsonToClass(pp))
             con.close()
             return s
@@ -89,13 +82,11 @@ class Facade(object):
             sys.exit(1)
         finally:
             if con:
-                cur.execute("SELECT job_data FROM job");
+                cur.execute("SELECT job_data::text FROM job");
                 rows = cur.fetchall()
                 for row in rows:
-                    pp = str(row[0]).replace("u'", '"')
-                    pp = pp.replace("'", '"')
-                    pp = pp.replace('\\n', ' ')
-                    pp = pp.replace('\\', ' ')
+                    pp = str(row[0])
+                    print (pp)
                     s.append(decodeJsonToClass(pp))
             con.close()
             return s
@@ -111,14 +102,12 @@ class Facade(object):
                         sys.exit(1)
         finally:
                 if con:
-                        cur.execute("SELECT matchbox_data FROM matchbox");
+                        cur.execute("SELECT matchbox_data::text FROM matchbox");
                         rows = cur.fetchall()
                         for row in rows:
-                                pp = str(row[0]).replace("u'", '"')
-                                pp = pp.replace("'", '"')
-                                pp = pp.replace('\\n', ' ')
-                                pp = pp.replace('\\', ' ')
-                                s.add(decodeJsonToClass(pp))
+                            pp = str(row[0])
+                            print (pp)
+                            s.add(decodeJsonToClass(pp))
                 con.close()
                 return s
 

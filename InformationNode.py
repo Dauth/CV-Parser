@@ -2,11 +2,12 @@ __author__ = 'Owner'
 
 class InformationNode(object):
 
-    def __init__(self, content = None):
+    def __init__(self, contentId, content = None):
+        self.contentId = contentId
         self.contentType = None
         self.skillSet = set()
         self.experience = []
-        self.education = []
+        self.education = dict()
         self.content = content or []
         self.language = []
         self.location = None
@@ -21,6 +22,12 @@ class InformationNode(object):
     def getContentType(self):
         return self.contentType
 
+    def getContentId(self):
+        return self.contentId
+
+    def setContentId(self, contentId):
+        self.contentId = contentId
+
     def addSkill(self, inputSkill):
         self.skillSet.add(inputSkill)
 
@@ -33,8 +40,8 @@ class InformationNode(object):
     def getExperience(self):
         return self.experience
 
-    def addEducation(self, education):
-        self.education.append(education)
+    def addEducation(self, educationLevel, educationLoc = None):
+        self.education[educationLevel] = educationLoc
 
     def getEducation(self):
         return self.education
@@ -60,4 +67,4 @@ class InformationNode(object):
 
     @staticmethod
     def convertStringIntoList(inputText):
-        return inputText[0].lower().split('\n')
+        return [line for line in inputText[0].lower().split('\n') if line]

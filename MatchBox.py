@@ -11,6 +11,7 @@ class MatchBox(object):
         return self.matches
     def getJob(self):
         return self.job
+<<<<<<< HEAD
     def __iter__(self):
         return MatchBoxIterator(self.matches)
     
@@ -23,3 +24,5 @@ class MatchBoxIterator(object):
         if not self.data:
             raise StopIteration
         return self.data.pop()
+=======
+>>>>>>> aa771d1a30131f6bdbae7f6ae89ca278b373b5be

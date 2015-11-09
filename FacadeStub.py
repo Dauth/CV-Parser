@@ -14,7 +14,7 @@ class FacadeStub(object):
 		self.db['matchboxes'] = boxes
 
 	def addMatchBoxes(self, boxes):
-                self.db['matchboxes'].union(boxes)
+        self.db['matchboxes'].update(boxes)
 
 	def getAllJobs(self):
 		return self.db['jobs']
@@ -24,14 +24,14 @@ class FacadeStub(object):
 
 	def getNewJobs(self):
 		new_jobs = self.db['new_jobs']
+		self.db['jobs'].update(new_jobs)
 		self.db['new_jobs'] = set()
-		self.db['jobs'].union(new_jobs)
 		return new_jobs
 
 	def getNewResumes(self):
 		new_resumes = self.db['new_resumes']
+		self.db['resumes'].update(new_resumes)
 		self.db['new_resumes'] = set()
-		self.db['resumes'].union(new_resumes)
 		return new_resumes
 
 	def getMatchBoxes(self):

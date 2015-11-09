@@ -1,4 +1,17 @@
 # CV-Parser
+Requirements -? pip install -r requirements.txt
+* http://spotlight.sztaki.hu/downloads/dbpedia-spotlight-0.7.jar
+* http://spotlight.sztaki.hu/downloads/en_2+2.tar.gz
+* 1) create a folder named dbpediaspotilight in your project folder
+* 2) unzip both the tar.gz file and the jar file into the dbpediaspotlight folder
+* 3) rename the en_2+2 folder to  en
+* 4) rename jar file to just dbpediaspotlight.jar
+* 5) open cmd in the dbpediaspotlight folder
+* 6) type java -jar dbpediaspotlight.jar en http://localhost:2222/rest
+
+
+
+
 
 CustomClassJson
 
