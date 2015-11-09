@@ -19,15 +19,12 @@ class Scorer(object):
         for mb in matchBoxes:
             matches = mb.getMatches()
             #for each match in each matchbox
+            results[mb.getJob().getContentId()] = list();
             for curMatch in matches:
-                score = 0
-                wordSet = curMatch.getMatchedWords()
-                #for each word in each match object
-                for curWord in wordSet:
-                    score += 1
-                results[mb.job].append((curMatch.resume.getName(), score))
-            results[mb.job].sort(key=lambda x: x[1], reverse = True)
-            emptyBox = MatchBox(mb.job)
+                score = curMatch.getMatchedWords()
+                results[mb.getJob().getContentId()].append((curMatch.getResume().getContentId(), score))
+            results[mb.getJob().getContentId()].sort(key=lambda x: x[1], reverse = True)
+            emptyBox = MatchBox(mb.getJob())
             emptyMatchBoxes.add(emptyBox)
 
         self.db.storeMatchBoxes(emptyMatchBoxes)
