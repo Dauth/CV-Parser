@@ -62,9 +62,9 @@ class FieldLocator(object):
                 if word in self.getLocationKeywordList():
                     self.fieldNode.addLocationIndex(item, nextIndex)
 
-
+        # print('------------>',self.fieldNode.getSkillsIndex())
     def getLanguageKeywordsList(self):
-        return ['languages']
+        return ['languages', "language"]
     def getEducationKeywordsList(self):
         return ['education', 'university', 'school', 'polytechnic', 'ite',
                 'academic', 'degree', 'phd', 'study', 'requirements']
@@ -92,7 +92,7 @@ class FieldLocator(object):
                 "qualification", "qualifications", "skill",
                 'paper', 'papers', 'experiences',
                 'activity', 'activities', 'objective', 'history', 'courses', 'course', 'technical',
-                'proficiency', 'proficiencies', 'requirements', 'requirement', 'location', 'description']
+                'proficiency', 'proficiencies', 'requirements', 'requirement', 'location', 'description', "language"]
 
     def getFieldNode(self):
         return self.fieldNode
