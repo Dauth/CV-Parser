@@ -2,13 +2,13 @@
 # 1 to 1 match between a resume and a job
 # 1 set of matched words
 class Match(object):
-    def __init__(self, resume, job, word_set):
+    def __init__(self, resume, job, count):
         self.resume = resume
         self.job = job
-        self.word_set = word_set
+        self.count = count
 
-    def getMatchedWords(self):
-        return self.word_set
+    def getCount(self):
+        return self.count
     def getJob(self):
         return self.job
     def getResume(self):
