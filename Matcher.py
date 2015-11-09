@@ -43,6 +43,7 @@ class Matcher(object):
         expResult = (self.compareExperienceBetweenJobandResume(resume.getExperience(), job.getExperience(),InformationNode.convertStringIntoList(job.getImptKeywords())))
         finalResult = eduResult + expResult +resultLocationSet + resultLang + resultSkill
         new_match = Match(resume, job, finalResult)
+        print(finalResult)
         return new_match
 
     def matchAll(self, mode = 0):
