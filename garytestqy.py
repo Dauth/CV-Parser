@@ -30,12 +30,12 @@ def test(node):
 def main():
 
     # ###uncomment for resume
-    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\DesmondLim2.json')
+    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\input\\resume3.json')
     print(resume)
     resumeNode = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
 
     ##uncomment for job desc
-    content = openFile('D:\install location\pycharm\python\\nltkProj\data\\sampleJob2.json')
+    content = openFile('D:\install location\pycharm\python\\nltkProj\data\\input\\jobdesc3.json')
     keywords = openFile('D:\install location\pycharm\python\\nltkProj\data\\keywords.json')
     # print(resume)
     #
@@ -51,23 +51,25 @@ def main():
     jskillSet = set(jobNode.getSkills())
     resultSkillSet = rskillSet.intersection(jskillSet)
     resultSkillSet2 = rskillSet.intersection(imptKeywordSet)
-    # print(rskillSet)
-    # print(jskillSet)
+    print(rskillSet)
+    print(jskillSet)
     print(len(resultSkillSet) + len(resultSkillSet2))
     rLangSet = set(resumeNode.getLanguage())
     jLangSet = set(jobNode.getLanguage())
     resultLangSet = rLangSet.intersection(jLangSet)
     resultLangSet2 = rskillSet.intersection(imptKeywordSet)
-    # print(rLangSet)
-    # print(jLangSet)
+    print(rLangSet)
+    print(jLangSet)
     print(len(resultLangSet) + len(resultLangSet2))
     rLocationSet = resumeNode.getLocation().getCountry()
     jLocationSet = jobNode.getLocation().getCountry()
     resultLocationSet = int(rLocationSet == jLocationSet)
     print(resultLocationSet)
+    print(rLocationSet)
+    print(jLocationSet)
 
-    # print(resumeNode.getEducation())
-    # print(jobNode.getEducation())
+    print(resumeNode.getEducation())
+    print(jobNode.getEducation())
     print(compareEducationBetweenJobandResume(resumeNode.getEducation(), jobNode.getEducation()))
     print(compareExperienceBetweenJobandResume(resumeNode.getExperience(), jobNode.getExperience(),InformationNode.convertStringIntoList(keywords) ))
 
@@ -84,6 +86,8 @@ def compareEducationBetweenJobandResume(resumeEdu, jobEdu):
 def compareExperienceBetweenJobandResume(resumeExp, jobExp, imptkeywords):
     resumeSet =set(i.getWorkPositionOrExp() for i in resumeExp)
     jobSet =set(i.getWorkPositionOrExp() for i in jobExp)
+    print(resumeSet)
+    print(jobSet)
     imptkeywordsSet = set(imptkeywords)
     return len(resumeSet.intersection(jobSet)) + len(resumeSet.intersection(imptkeywordsSet))
 
