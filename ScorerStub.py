@@ -1,10 +1,10 @@
 from collections import defaultdict
-from MatchBox import MatchBox
-from Match import Match
-from Facade import Facade
 import json
+from MatchBox import MatchBox
+import Match
+import Facade
 
-class ScorerStub(object):
+class Scorer(object):
     """docstring for Scorer"""
     def __init__(self, db):
         self.db = db
@@ -19,24 +19,20 @@ class ScorerStub(object):
         for mb in matchBoxes:
             matches = mb.getMatches()
             #for each match in each matchbox
+            results[mb.getJob().getContentId()] = list();
             for curMatch in matches:
-                score = 0
-                wordSet = curMatch.getMatchedWords()
-                #for each word in each match object
-                for curWord in wordSet:
-                    score += 1
-                results[mb.job].append((curMatch.resume.getName(), score))
-            results[mb.job].sort(key=lambda x: x[1], reverse = True)
-            emptyBox = MatchBox(mb.job)
+                score = curMatch.getMatchedWords()
+                results[mb.getJob().getContentId()].append((curMatch.getResume().getContentId(), score))
+            results[mb.getJob().getContentId()].sort(key=lambda x: x[1], reverse = True)
+            emptyBox = MatchBox(mb.getJob())
             emptyMatchBoxes.add(emptyBox)
 
         self.db.storeMatchBoxes(emptyMatchBoxes)
-        #db.storeResults(results)
+        self.db.storeResults(results)
         if not results:
             print('empty')
         for x in results:
             print(x)
-        #insert results to db
         '''
         results will be dictionary, key will be job and value will
         be a list of tuples(resume, score) sorted by descending order of 
