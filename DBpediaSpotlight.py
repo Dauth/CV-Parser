@@ -2,7 +2,7 @@ __author__ = 'Owner'
 import spotlight
 
 def annotate(text):
-    return spotlight.annotate('http://localhost:2222/rest/annotate',
+    return spotlight.annotate('http://spotlight.sztaki.hu:2222/rest/annotate',
                                       text,
                                       confidence=0.30, support=30, spotter='Default')
     #return [i.get('surfaceForm') for i in annotation]

@@ -32,8 +32,8 @@ class ControllerStub(object):
         scorer.calculateScore()
 
 main = ControllerStub()
-resumeFile = openFile('qy\\sampleResume.json')
-jobFile = openFile('qy\\sampleJob2.json')
+resumeFile = openFile('data\\input\\resume1.json')
+jobFile = openFile('data\\input\\jobdesc1.json')
 keywordFile = openFile('data\\keywords.json')
 main.process(resumeFile, jobFile, keywordFile)
 main.getResults()
