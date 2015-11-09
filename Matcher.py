@@ -50,6 +50,8 @@ class Matcher(object):
             job_list = self.db.getNewJobs()
             boxes = set()
 
+            assert len(job_list) > 0
+            assert len(resume_list) > 0
             for job in job_list:
                 box = MatchBox(job)
                 for resume in resume_list:
@@ -63,13 +65,14 @@ class Matcher(object):
             resume_list = self.db.getNewResumes()
             boxes = self.db.getMatchBoxes()
 
+            assert len(resume_list) > 0
+            assert len(boxes) > 0
             for b in boxes:
                 box = b
                 for resume in resume_list:
                     job = box.getJob()
                     new_match = self.match(resume, job)
                     box.addMatch(new_match)
-                boxes.add(box)
             self.db.storeMatchBoxes(boxes)
 
         #Only new jobs are uploaded
@@ -78,6 +81,8 @@ class Matcher(object):
             job_list = self.db.getNewJobs()
             boxes = set()
 
+            assert len(job_list) > 0
+            assert len(resume_list) > 0
             for job in job_list:
                 box = MatchBox(job)
                 for resume in resume_list:
