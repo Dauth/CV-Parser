@@ -12,7 +12,7 @@ class MatchBox(object):
     def getJob(self):
         return self.job
     def __iter__(self):
-        return MatchBoxIterator(self)
+        return MatchBoxIterator(self.matches)
     
 class MatchBoxIterator(object):
     def __init__(self, data):

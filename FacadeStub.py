@@ -5,10 +5,10 @@ class FacadeStub(object):
 			'new_jobs': set(), 'new_resumes': set()}
 
 	def storeJob(self, job):
-		self.db['new_jobs'].union(set([job]))
+		self.db['new_jobs'].add(job)
 
 	def storeResume(self, resume):
-		self.db['new_resumes'].union(set([resume]))
+		self.db['new_resumes'].add(resume)
 
 	def storeMatchBoxes(self, boxes):
 		self.db['matchboxes'] = boxes
