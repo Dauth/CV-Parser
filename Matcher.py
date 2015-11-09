@@ -55,11 +55,7 @@ class Matcher(object):
             for job in job_list:
                 box = MatchBox(job)
                 for resume in resume_list:
-<<<<<<< HEAD
-                    new_match = match(resume, job)
-=======
                     new_match = self.match(resume, job)
->>>>>>> aa771d1a30131f6bdbae7f6ae89ca278b373b5be
                     box.addMatch(new_match)
                 boxes.add(box)
             self.db.addMatchBoxes(boxes)
