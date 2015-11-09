@@ -14,7 +14,7 @@ class FacadeStub(object):
 		self.db['matchboxes'] = boxes
 
 	def addMatchBoxes(self, boxes):
-        self.db['matchboxes'].update(boxes)
+                self.db['matchboxes'].update(boxes)
 
 	def getAllJobs(self):
 		return self.db['jobs']

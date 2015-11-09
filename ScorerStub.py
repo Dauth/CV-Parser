@@ -4,7 +4,7 @@ from MatchBox import MatchBox
 import Match
 import Facade
 
-class Scorer(object):
+class ScorerStub(object):
     """docstring for Scorer"""
     def __init__(self, db):
         self.db = db
