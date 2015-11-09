@@ -23,7 +23,7 @@ class LocationParser(IParser):
 
             listString = "\n".join(line for line in self.extractedContent)
             geo = geocoder.google(listString)
-            if geo is not None:
+            if geo.json.get('status') == 'OK':
                 countryNode = CountryNode(geo.json, geo.country_long.lower(), geo.city.lower())
                 node.addLocation(countryNode)
 
