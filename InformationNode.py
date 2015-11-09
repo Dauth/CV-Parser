@@ -34,17 +34,25 @@ class InformationNode(object):
     def getSkills(self):
         return self.skillSet
 
+    def isSkillsPresent(self):
+        return bool(self.skillSet)
+
     def addExperience(self, inputExperience):
         self.experience.append(inputExperience)
 
     def getExperience(self):
         return self.experience
+    def isExperiencePresent(self):
+        return bool(self.experience)
+
 
     def addEducation(self, educationLevel, educationLoc = None):
         self.education[educationLevel] = educationLoc
 
     def getEducation(self):
         return self.education
+    def isEducationPresent(self):
+        return bool(self.education)
 
     def getContent(self):
         return self.content
@@ -56,6 +64,8 @@ class InformationNode(object):
         return self.language
     def addLanguage(self, language):
         self.language.append(language)
+    def isLanguagePresent(self):
+        return bool(self.language)
 
     def getLocation(self):
         return self.location
@@ -64,7 +74,23 @@ class InformationNode(object):
     def isLocationPresent(self):
         return bool(self.location)
 
-
+    # def __repr__(self):
+    #     print("----- SKILLS -----")
+    #     print(self.getSkills())
+    #     print("----- Education -----")
+    #     print(self.getEducation())
+    #     print("----- Language -----")
+    #     print(self.getLanguage())
+    #     print("----- Experience -----")
+    #     print(self.getExperience())
+    #     for i in self.getExperience():
+    #         print(i.workPositionOrExp)
+    #         print(i.workDuration)
+    #     print("----- Location -----")
+    #     print(self.getLocation())
+    #     print(self.getLocation().getAddress())
+    #     print(self.getLocation().getCountry())
+    #     print(self.getLocation().getCity())
     @staticmethod
     def convertStringIntoList(inputText):
         return [line for line in inputText[0].lower().split('\n') if line]
