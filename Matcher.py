@@ -10,34 +10,48 @@ class Matcher(object):
 
     def __init__(self, db):
         self.db = db
-
-
+        
     def match(self, resume, job):
         imptKeywordSet = set(InformationNode.convertStringIntoList(job.getImptKeywords()))
-        print(imptKeywordSet)
-        rskillSet = set(resume.getSkills())
-        jskillSet = set(job.getSkills())
-        resultSkillSet = rskillSet.intersection(jskillSet)
-        resultSkillSet2 = rskillSet.intersection(imptKeywordSet)
-        # print(rskillSet)
-        # print(jskillSet)
-        resultSkill = (len(resultSkillSet) + len(resultSkillSet2))
-        rLangSet = set(resume.getLanguage())
-        jLangSet = set(job.getLanguage())
-        resultLangSet = rLangSet.intersection(jLangSet)
-        resultLangSet2 = rskillSet.intersection(imptKeywordSet)
-        # print(rLangSet)
-        # print(jLangSet)
-        resultLang = (len(resultLangSet) + len(resultLangSet2))
-        rLocationSet = resume.getLocation().getCountry()
-        jLocationSet = job.getLocation().getCountry()
-        resultLocationSet = int(rLocationSet == jLocationSet)
-        #print(resultLocationSet)
+        # print(imptKeywordSet)
+        eduResult = 0
+        expResult = 0
+        resultLocationSet = 0
+        resultLang = 0
+        resultSkill = 0
 
-        # print(resumeNode.getEducation())
-        # print(jobNode.getEducation())
-        eduResult = (self.compareEducationBetweenJobandResume(resume.getEducation(), job.getEducation()))
-        expResult = (self.compareExperienceBetweenJobandResume(resume.getExperience(), job.getExperience(),InformationNode.convertStringIntoList(job.getImptKeywords())))
+        if(resume.isSkillsPresent() and job.isSkillsPresent()):
+            rskillSet = set(resume.getSkills())
+            jskillSet = set(job.getSkills())
+            resultSkillSet = rskillSet.intersection(jskillSet)
+            resultSkillSet2 = rskillSet.intersection(imptKeywordSet)
+            resultSkill = (len(resultSkillSet) + len(resultSkillSet2))
+            # print(rskillSet)
+            # print(jskillSet)
+
+        if(resume.isLanguagePresent() and job.isLanguagePresent()):
+            rLangSet = set(resume.getLanguage())
+            jLangSet = set(job.getLanguage())
+            resultLangSet = rLangSet.intersection(jLangSet)
+            resultLangSet2 = rskillSet.intersection(imptKeywordSet)
+            resultLang = (len(resultLangSet) + len(resultLangSet2))
+            # print(rLangSet)
+            # print(jLangSet)
+
+        if (resume.isLocationPresent()  and job.isLocationPresent()):
+            rLocationSet = resume.getLocation().getCountry()
+            jLocationSet = job.getLocation().getCountry()
+            resultLocationSet = int(rLocationSet == jLocationSet)
+            # print(resultLocationSet)
+
+
+        if(resume.isEducationPresent() and job.isEducationPresent()):
+            eduResult = (self.compareEducationBetweenJobandResume(resume.getEducation(), job.getEducation()))
+        if(resume.isExperiencePresent() and job.isExperiencePresent()):
+            expResult = (self.compareExperienceBetweenJobandResume(resume.getExperience(), job.getExperience(),InformationNode.convertStringIntoList(job.getImptKeywords())))
+            # print(resumeNode.getEducation())
+            # print(jobNode.getEducation())
+
         finalResult = eduResult + expResult +resultLocationSet + resultLang + resultSkill
         new_match = Match(resume, job, finalResult)
         print(finalResult)
