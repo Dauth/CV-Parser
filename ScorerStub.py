@@ -33,8 +33,6 @@ class ScorerStub(object):
             print('empty')
         else:
             print(results)
-        for x in results:
-            print(results[x])
         '''
         results will be dictionary, key will be job and value will
         be a list of tuples(resume, score) sorted by descending order of 

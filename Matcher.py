@@ -14,26 +14,30 @@ class Matcher(object):
 
     def match(self, resume, job):
         imptKeywordSet = set(InformationNode.convertStringIntoList(job.getImptKeywords()))
-        print(imptKeywordSet)
+        #print(imptKeywordSet)
         rskillSet = set(resume.getSkills())
         jskillSet = set(job.getSkills())
         resultSkillSet = rskillSet.intersection(jskillSet)
         resultSkillSet2 = rskillSet.intersection(imptKeywordSet)
-        print(rskillSet)
-        print(jskillSet)
+        #print(resultSkillSet)
+        #print(resultSkillSet2)
+        #print(rskillSet)
+        #print(jskillSet)
         resultSkill = (len(resultSkillSet) + len(resultSkillSet2))
         rLangSet = set(resume.getLanguage())
         jLangSet = set(job.getLanguage())
         resultLangSet = rLangSet.intersection(jLangSet)
         resultLangSet2 = rskillSet.intersection(imptKeywordSet)
-        print(rLangSet)
-        print(jLangSet)
+        #print(resultLangSet)
+        #print(resultLangSet2)
+        #print(rLangSet)
+        #print(jLangSet)
         resultLang = (len(resultLangSet) + len(resultLangSet2))
         if (resume.getLocation() != None):
             rLocationSet = resume.getLocation().getCountry()
             jLocationSet = job.getLocation().getCountry()
             resultLocationSet = int(rLocationSet == jLocationSet)
-            print(resultLocationSet)
+            #print(resultLocationSet)
         else:
             resultLocationSet = 0
 

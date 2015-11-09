@@ -4,6 +4,7 @@ from FacadeStub import FacadeStub
 from ResumeNode import ResumeNode
 from JobDescNode import JobDescNode
 from ScorerStub import ScorerStub
+from Scorer import Scorer
 import json, re
 import jsonpickle
 
@@ -28,12 +29,12 @@ class ControllerStub(object):
         self.matcher.matchAll(0)
 
     def getResults(self):
-        scorer = ScorerStub(self.facade)
+        scorer = Scorer(self.facade)
         scorer.calculateScore()
 
 main = ControllerStub()
-resumeFile = openFile('data\\input\\resume1.json')
-jobFile = openFile('data\\input\\jobdesc1.json')
+resumeFile = openFile('data\\input\\resume3.json')
+jobFile = openFile('data\\input\\jobdesc3.json')
 keywordFile = openFile('data\\keywords.json')
 main.process(resumeFile, jobFile, keywordFile)
 main.getResults()
