@@ -31,8 +31,10 @@ class ScorerStub(object):
         self.db.storeResults(results)
         if not results:
             print('empty')
+        else:
+            print(results)
         for x in results:
-            print(x)
+            print(results[x])
         '''
         results will be dictionary, key will be job and value will
         be a list of tuples(resume, score) sorted by descending order of 

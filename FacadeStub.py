@@ -2,7 +2,7 @@ class FacadeStub(object):
 
 	def __init__(self):
 		self.db = {'jobs': set(), 'resumes': set(), 'matchboxes': set(),
-			'new_jobs': set(), 'new_resumes': set()}
+			'new_jobs': set(), 'new_resumes': set(), 'results': list()}
 
 	def storeJob(self, job):
 		self.db['new_jobs'].add(job)
@@ -36,3 +36,7 @@ class FacadeStub(object):
 
 	def getMatchBoxes(self):
 		return self.db['matchboxes']
+
+	def storeResults(self, results):
+                self.db['results'] = results
+                

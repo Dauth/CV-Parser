@@ -18,9 +18,9 @@ class ControllerStub(object):
         self.facade = FacadeStub()
         self.matcher = Matcher(self.facade)
 
-    def process(self, resume, job):
+    def process(self, resume, job, keyword):
         resumeNode = ResumeNode("name", "999", "email@email.com", "0", resume)
-        jobNode = JobDescNode("0", job)
+        jobNode = JobDescNode("0", job, keyword)
         ResumeProcessor.construct(resumeNode)
         ResumeProcessor.construct(jobNode)
         self.facade.storeJob(jobNode)
@@ -30,13 +30,10 @@ class ControllerStub(object):
     def getResults(self):
         scorer = ScorerStub(self.facade)
         scorer.calculateScore()
-        if not self.facade.getMatchBoxes():
-            print('empty boxes')
-
-
 
 main = ControllerStub()
-resumeFile = openFile('qy/sampleResume.json')
-jobFile = openFile('qy/sampleJob1.json')
-main.process(resumeFile, jobFile)
+resumeFile = openFile('qy\\sampleResume.json')
+jobFile = openFile('qy\\sampleJob2.json')
+keywordFile = openFile('data\\keywords.json')
+main.process(resumeFile, jobFile, keywordFile)
 main.getResults()

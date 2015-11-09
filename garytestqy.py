@@ -30,13 +30,13 @@ def test(node):
 def main():
 
     # ###uncomment for resume
-    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\DesmondLim2.json')
+    resume = openFile('data\\DesmondLim2.json')
     print(resume)
     resumeNode = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
 
     ##uncomment for job desc
-    content = openFile('D:\install location\pycharm\python\\nltkProj\data\\sampleJob2.json')
-    keywords = openFile('D:\install location\pycharm\python\\nltkProj\data\\keywords.json')
+    content = openFile('data\\sampleJob2.json')
+    keywords = openFile('data\\keywords.json')
     # print(resume)
     #
     jobNode = JobDescNode("545646", content, keywords)
