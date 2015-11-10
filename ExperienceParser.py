@@ -41,10 +41,11 @@ class ExperienceParser(IParser):
                 if years in wordsInList or year in wordsInList:
                     yearIndex = wordsInList.index(years) or wordsInList.index(year)
                 for word in annotatedList:
-                    if yearIndex is not None:
+                    if yearIndex is not None and word[0].isalpha():
                         experienceSubNode = ExperienceSubNode(word, " ".join(wordsInList[yearIndex-1 : yearIndex+1]))
                     else:
-                        experienceSubNode = ExperienceSubNode(word, None)
+                        if word[0].isalpha():
+                            experienceSubNode = ExperienceSubNode(word, None)
                     node.addExperience(experienceSubNode)
             except:
                 pass
