@@ -21,7 +21,7 @@ class Scorer(object):
             #for each match in each matchbox
             results[mb.getJob().getContentId()] = list();
             for curMatch in matches:
-                score = curMatch.getMatchedWords()
+                score = curMatch.getCount()
                 results[mb.getJob().getContentId()].append((curMatch.getResume().getContentId(), score))
             results[mb.getJob().getContentId()].sort(key=lambda x: x[1], reverse = True)
             emptyBox = MatchBox(mb.getJob())
