@@ -1,7 +1,7 @@
 <?php
 
-include '../vendor/autoload.php';
 include 'db.php';
+require("class.filetotext.php");
 
  $gaSql['link'] = pg_connect(
         " host=".$gaSql['server'].
@@ -12,48 +12,55 @@ include 'db.php';
 
 
    	
-
    if (is_uploaded_file($_FILES['classnotes']['tmp_name'])) {
 
       if ($_FILES['classnotes']['type'] != "application/pdf") {
-         echo "<p>Class notes must be uploaded in PDF format.</p>";
+          
       } else {
           
+          $name  = uniqid(true);
+
             $content = file_get_contents($_FILES['classnotes']['tmp_name']);
 
-          if ($content) {
-			
-              $mainJSON = array();
-              $mainString = "";
-              
-			foreach ($pages as $page) {
-                $mainString = $mainString." ".$page->getText();
-                
-                  
-                
 
-			}
-              
+          if ($content)
+          {
+              $result = move_uploaded_file($_FILES['classnotes']['tmp_name'], "data/$name.pdf");
+
+              //$docObj = new Filetotext("data/$name.pdf");
+             //$mainString = $docObj->convertToText();
+
+                exec('pdftotext.exe data/'.$name.'.pdf -table');
+                exec('python garyconvert.py "'.$name.'"');
+
+              $mainJSON = array();
+
+
               array_push($mainJSON,$mainString);
-              
-           
-                
-                $contentName = uniqid();
-               $name = "Jobssfodummies";
-              $keyWords = "vava";
-              
-              
-              $result = exec('python CreateNewJob.py '.$name.' '.$contentName.' '.$keyWords.' '.json_encode($mainJSON));
+
+
+
+echo $name;
+        $contentName = $name;
+              $name = $_POST['nameJob'];
+              echo $name;
+              $keyword = $_POST['keyword'];
+
+              exec('python CreateNewJob.py "'.$name.'" "'.$contentName.'" "'.$keyword.'" '.json_encode($mainJSON));
+              echo "this is from php";
+              echo json_encode($mainJSON);
+
+
+
+              echo json_encode($mainJSON);
 
                 echo pg_last_error();
-              
-              echo $mainString;
+
           }
               
          
-      } #endIF
    } #endIF
-
+   }
 ?>
 
 

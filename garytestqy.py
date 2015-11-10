@@ -13,7 +13,7 @@ from FieldLocator import FieldLocator
 from ParserFactory import ParserFactory
 from ResumeProcessor import ResumeProcessor
 import CustomClassJson
-import jellyfish
+
 from Matcher import Matcher
 def saveFile(fileLocation, tempList, keyword):
     fileName = ''.join((fileLocation, keyword, '.json'))
@@ -30,13 +30,13 @@ def test(node):
 def main():
 
     # ###uncomment for resume
-    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\input\\resume3.json')
+    resume = openFile('C:\\xampp\htdocs\CV-Parser-master\data\\input\\resume3.json')
     print(resume)
     resumeNode = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
 
     ##uncomment for job desc
-    content = openFile('D:\install location\pycharm\python\\nltkProj\data\\input\\jobdesc3.json')
-    keywords = openFile('D:\install location\pycharm\python\\nltkProj\data\\keywords.json')
+    content = openFile('C:\\xampp\htdocs\CV-Parser-master\data\input\\jobdesc3.json')
+    keywords = openFile('C:\\xampp\htdocs\CV-Parser-master\data\input\keywords1.json')
     # print(resume)
     #
     jobNode = JobDescNode("545646", content, keywords)

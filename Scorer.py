@@ -32,9 +32,8 @@ class Scorer(object):
         #insert results to db
         '''
         results will be dictionary, key will be job and value will
-        be a list of tuples(resume, score) sorted by descending order of 
+        be a list of tuples(resume, score) sorted by descending order of
         scores
         '''
 
 
-        

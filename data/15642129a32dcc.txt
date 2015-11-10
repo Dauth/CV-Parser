@@ -1,0 +1,210 @@
+Russell Ong
+
+Senior Software Engineer - iOS at ReQall PTE LTD
+
+Summary
+
+- iOS and Android Application Development with app on the App Store - Various Smartwatches SDK
+
+implementation - Web application development for various clients using Ruby on Rails. - Various
+
+Facebook
+
+API integration - Various OAuth/OpenID integration Specialties: Mobile/Web Application
+
+Development,
+
+CMS/CRM/ERP Development, iOS/Android Development, Facebook/Twitter Application
+
+Development,
+
+Ruby, Ruby on Rails, Objective-C, REST/SOAP Frameworks, OAuth/OpenID Integration
+
+Work Experience
+
+Senior Software Engineer at  ReQall Technologies PTE LTD
+
+March 2012 - Present (3 years 8 months)
+
+- Mobile Applications development using native iOS and Android. - Integration with various
+
+smartwatch
+
+SDKs (Pebble, Samsung Gear/Gear Fit, Qualcomm Toq, Sony SmartWatch, Android Wear, iWatch) -
+
+Integration with Auto manufacturer SDKs (mySPIN)
+
+Assistant Professor  at  Chiang Kai Shek College
+
+June 2009 - April 2012 (2 years 11 months)
+
+Senior Software Engineer at  Rivereo
+
+January 2011 - March 2012 (1 year 3 months)
+
+- Web/Mobile Application Development - Various API integration
+
+Software Engineer at     Exist Global
+August 2010 - December 2010 (5 months)
+
+Web Application Development
+
+Senior Software Engineer at  Brewed Concepts Inc
+
+July 2006 - August 2010 (4 years 2 months)
+
+Web Developer Team Management Systems Architect
+
+Web/Mobile Developer at      E Commerce Percs
+
+April 2006 - July 2006 (4 months)
+
+Mobile/Web Application Development
+
+Projects
+
+ZeroIN
+
+Page1
+
+April 2013 to Present
+
+Members:Russell O., Yat Pan Ng
+
+ZeroIN is the first context-aware, intelligent messaging app for the car. It uses your personal
+
+smartphone
+
+to keep email distractions to a minimum, no matter what car you're in. Only messages that are
+
+important,
+
+contain actionable content and merit attention are read out, and drivers can simply respond by
+
+voice -- to
+
+keep their eyes on the road and hands on the wheel. Stay connected to what's important - ZeroIN
+
+restricts
+
+incoming messages to just those from important contacts, and then distills the content to just the
+
+parts that
+require your attention.  Take action safely ­ reply to both incoming and pending action items via
+
+voice.
+
+Recordr
+
+December 2012 to Present
+
+Members:Russell O., Grae Joquico
+
+Recordr is the easiest audio/sound/voice recorder you can find. You can have the recordings
+
+automatically
+
+sync across your devices with iCloud. It even allows you to record and play in the background!
+
+Other
+
+features includes: 1. Sync files via your iTunes. 2. Share recordings via SoundCloud 3. Backup media
+
+files
+
+to your Dropbox account 4. Upload to your Google DriveTM Account 5. Send to friends via E-Mail.
+
+Recordr
+
+produces high quality recordings that can be used for interviews.
+
+SoFAB.com.ph
+
+September 2010 to Present
+
+Members:Russell O., Bryan Chan, Richard G.,  Grae  Joquico
+
+CMG.com.ph
+
+December 2010 to Present
+
+Members:Russell O., Richard G., Bryan Chan,  Grae  Joquico
+
+SoFAB iPad Application
+
+January 2011 to Present
+
+Members:Russell O., Richard G., Bryan Chan
+
+Languages
+
+English
+
+Filipino
+
+Chinese
+
+Skills & Expertise
+Ruby on Rails
+
+Ruby
+
+Facebook API
+
+Objective-C
+
+AJAX
+
+jQuery
+
+Web Services
+
+iOS Developer
+
+JavaScript
+
+REST
+
+iOS
+
+Git
+
+Android
+
+PostgreSQL
+
+HTML 5
+
+JSON
+
+Titanium
+
+SOAP
+
+Experience
+
+2+ years experience in developing android
+
+1 years experience in javascript
+
+Education
+
+PHD in life science
+
+De La Salle University
+
+Location
+Australia
+
+Interests
+
+Webdev, Photography, Scuba Diving, Travel
+
+Publications
+
+Qualcomm Developer of the month
+
+July 1, 2014
+
+Authors: Russell O.
+

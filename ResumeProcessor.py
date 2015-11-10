@@ -26,6 +26,7 @@ class ResumeProcessor(object):
     def construct(node):
         fl = FieldLocator()
         fl.identifyFields(node)
+        temp = fl.getFieldNode().getEducationIndex()
 
         for parserType in ResumeProcessor.__parserList:
             parser = ParserFactory.createParser(parserType, node.getContent())

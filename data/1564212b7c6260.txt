@@ -1,0 +1,93 @@
+the candidate:
+
+the successful candidate will have strong academic credentials and the background to perform
+
+independent literature reviews and analysis.
+
+he/she must be highly organized and able to work effectively both independently and in group
+
+environments.
+
+the candidate must be proficient at providing clear status reports, developing useful technical
+
+presentations, and have the skills necessary to successfully present to coworkers, customers and
+
+company leadership.
+
+required skills:
+
+knowledge of meshing theory and algorithms
+
+expertise using one or more cad software packages (e.g., solidworks, siemens nx, pro-engineer) or
+
+image processing packages (e.g, photoshop)
+
+working knowledge of version control system, project planning and reporting systems, and software
+
+development project cycle terms
+
+conversant (or better) with challenges in software development for multiple platforms ‚" mac,
+
+linux, and windows
+
+aircraft industry experience highly desired but not required (only 2nd to dynamic software
+
+development experience)
+
+must be highly detail-oriented and self-motivated with a strong work ethic
+
+ability to develop high levels of credibility and forge solid professional relationships with
+
+subordinates, peers, and management
+
+education and experience:
+
+bachelor degree in an engineering discipline, preferably electrical, mechanical, aerospace or
+
+computer science, with a master‚TMs degree strongly preferred
+
+strong academic credentials, ability to perform independent literature review and analysis of
+
+research papers, articles, and white papers
+
+experience or coursework in geometry and graphics, opengl preferred
+
+3+ years of direct experience in developing mesh manipulations or other geometric software
+
+experience using cad modeler apis (e.g., solidworks, siemens nx, pro-engineer) or cad kernel apis
+
+(e.g., acis, parasolid, granite) strongly preferred
+
+experience in creating guis for cad or cad-like applications (e.g. image processing) using qt or other
+
+suitable techniques
+
+opengl experience is also desired
+
+expertise in rhino is a plus
+
+experience with object oriented programming
+
+compensation and opportunity:
+this position offers the opportunity to function as a key player in a rapidly growing, entrepreneurial
+
+organization developing a new and innovative software.
+
+a competitive compensation and benefits package designed to attract the highest caliber talent will
+
+be available for this position.
+
+an in-depth background check will be run on any candidate prior to receiving a job offer.
+
+an offer of employment is contingent on the results of this background check.
+
+location
+
+50 nanyang ave, singapore 639798
+
+languages
+
+english
+
+malay
+

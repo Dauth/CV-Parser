@@ -28,17 +28,17 @@ def test(node):
 def main():
 
     # ###uncomment for resume
-    # resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\DesmondLim2.json')
-    # print(resume)
-    # personA = ResumeNode("desmond", '97859875', 'desmond@gmail.com', '456', resume)
+    resume = openFile('C:\\xampp\htdocs\CV-Parser-master\data\input\\1.json')
+    print(resume)
+    personA = ResumeNode("mike", '97859875', 'desmond@gmail.com', '456', resume)
 
     ##uncomment for job desc
-    resume = openFile('D:\install location\pycharm\python\\nltkProj\data\\sampleJob.json')
-    keywords = openFile('D:\install location\pycharm\python\\nltkProj\data\\keywords.json')
-    print(resume)
+    # resume = openFile('C:\\xampp\htdocs\CV-Parser-master\data\input\\jobdesc3.json')
+    # keywords = openFile('C:\\xampp\htdocs\CV-Parser-master\data\\keywords.json')
+    #print(resume)
 
-    personA = JobDescNode("545646", resume, keywords)
-    print(personA.getImptKeywords())
+    # personA = JobDescNode("545646", resume, keywords)
+    # print(personA.getImptKeywords())
 
     ResumeProcessor.construct(personA)
     print("----- SKILLS -----")
