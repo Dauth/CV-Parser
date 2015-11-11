@@ -20,6 +20,7 @@ class Matcher(object):
         resultLocationSet = 0
         resultLang = 0
         resultSkill = 0
+        matchedKeywords = []
 
         if(resume.isSkillsPresent() and job.isSkillsPresent()):
             rskillSet = set(resume.getSkills())
@@ -27,6 +28,7 @@ class Matcher(object):
             resultSkillSet = rskillSet.intersection(jskillSet)
             resultSkillSet2 = rskillSet.intersection(imptKeywordSet)
             resultSkill = (len(resultSkillSet) + len(resultSkillSet2))
+            self.mergeSetIntoList(matchedKeywords, resultSkillSet.union(resultSkillSet2))
             # print(rskillSet)
             # print(jskillSet)
 
@@ -34,8 +36,9 @@ class Matcher(object):
             rLangSet = set(resume.getLanguage())
             jLangSet = set(job.getLanguage())
             resultLangSet = rLangSet.intersection(jLangSet)
-            resultLangSet2 = rskillSet.intersection(imptKeywordSet)
+            resultLangSet2 = jLangSet.intersection(imptKeywordSet)
             resultLang = (len(resultLangSet) + len(resultLangSet2))
+            self.mergeSetIntoList(matchedKeywords, resultLangSet.union(resultLangSet2))
             # print(rLangSet)
             # print(jLangSet)
 
@@ -45,17 +48,19 @@ class Matcher(object):
             resultLocationSet = int(rLocationSet == jLocationSet)
             # print(resultLocationSet)
 
-
         if(resume.isEducationPresent() and job.isEducationPresent()):
             eduResult = (self.compareEducationBetweenJobandResume(resume.getEducation(), job.getEducation()))
-        if(resume.isExperiencePresent() and job.isExperiencePresent()):
-            expResult = (self.compareExperienceBetweenJobandResume(resume.getExperience(), job.getExperience(),InformationNode.convertStringIntoList(job.getImptKeywords())))
             # print(resumeNode.getEducation())
             # print(jobNode.getEducation())
+        if(resume.isExperiencePresent() and job.isExperiencePresent()):
+            expResult = (self.compareExperienceBetweenJobandResume(resume.getExperience(), job.getExperience(),InformationNode.convertStringIntoList(job.getImptKeywords()), matchedKeywords))
+
 
         finalResult = eduResult + expResult +resultLocationSet + resultLang + resultSkill
-        new_match = Match(resume, job, finalResult)
+
+        new_match = Match(resume, job, finalResult, matchedKeywords)
         print(finalResult)
+        print(new_match.getMatchedKeyWords())
         return new_match
 
     def matchAll(self, mode = 0):
@@ -119,8 +124,15 @@ class Matcher(object):
                     return 1
         return 0
 
-    def compareExperienceBetweenJobandResume(self, resumeExp, jobExp, imptkeywords):
+    def compareExperienceBetweenJobandResume(self, resumeExp, jobExp, imptkeywords, matchedKeywords):
         resumeSet =set(i.getWorkPositionOrExp() for i in resumeExp)
         jobSet =set(i.getWorkPositionOrExp() for i in jobExp)
         imptkeywordsSet = set(imptkeywords)
+        self.mergeSetIntoList(matchedKeywords, resumeSet.intersection(jobSet))
+        self.mergeSetIntoList(matchedKeywords, resumeSet.intersection(imptkeywordsSet))
         return len(resumeSet.intersection(jobSet)) + len(resumeSet.intersection(imptkeywordsSet))
+
+    def mergeSetIntoList(self, matchedKeywords, set1):
+        for i in set1:
+            if i not in matchedKeywords:
+                matchedKeywords.append(i)

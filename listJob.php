@@ -196,7 +196,10 @@ border-radius: 3px;
              var str = " <button href='#listResumes' class='ressecBtn btn btn-large btn-primary' + data-toSearch='" + $(this).attr('href') + "' type='button'>View Matching Resumes</button><hr/>" ;
              var str = str + " <button data-once='false' href='#myModal' class='resBtn btn btn-large btn-primary' + data-opena='" + $(this).attr('href') + "' type='button'>View Job</button><hr/>" ;
              
-             //str =  str + "Address : " + b.location.json.address + "<hr/>";  
+             str = str + "<h4>Location</h4>";
+             
+
+             str = str + "<div class='inner'>" +  b.location.json.address + "</div>" + " "; 
              
              str = str + "<h4>Education</h4>"; 
              
