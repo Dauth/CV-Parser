@@ -84,6 +84,8 @@ foreach($majorFiltered as $key) {
         }
     }
     
+    $matchedKeyWords = array_unique($matchedKeyWords);
+    
     $select_query2 = sprintf("SELECT * FROM resume WHERE resume_contentname='%s'",pg_escape_string($key[0]));
     $result2 = pg_query($gaSql['link'] , $select_query2);
 
