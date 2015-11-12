@@ -82,7 +82,7 @@ border-radius: 3px;
 
         </div>
     </div>
-    
+    <hr/>
     <div class="row-fluid">
      
     <div class="span12">
@@ -190,6 +190,11 @@ border-radius: 3px;
         });
         
          $('body').on('click', '.loadQuestionLink', function (e) {
+             jQuery('.loadQuestionLink').each(function() {
+                 $(this).children().css("background-color","#ffffff");
+});
+             $(this).children().css("background-color","#f1c40f");
+             
              e.preventDefault();
              var a = $(this).attr('data-count');
              var b = JSON.parse(a);

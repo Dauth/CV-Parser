@@ -69,7 +69,6 @@ finally:
                 rows = cur.fetchall()
                 for row in rows:
                     if(row[0]=='TRUE'):
-                        print('ffffff')
                         cur.execute("UPDATE once SET isonce_resume=%s",('FALSE',))
                         con.commit()
                         matcher.matchAll(0)

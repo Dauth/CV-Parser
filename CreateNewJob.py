@@ -16,10 +16,13 @@ from CustomClassJson import decodeJsonToClass
 from ResumeProcessor import ResumeProcessor
 import json
 
-keyword = sys.argv[3]
-content = sys.argv[4]
+
 contentID = sys.argv[2]
 contentName = sys.argv[1]
+
+with open("2.json", encoding='utf-8') as inFile:
+    keyword = json.load(inFile)
+
 with open("1.json", encoding='utf-8') as inFile:
     contentFile = json.load(inFile)
 contentFile[0] =  contentFile[0].replace("\f", " ")

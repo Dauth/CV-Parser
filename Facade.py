@@ -138,6 +138,7 @@ class Facade(object):
             sys.exit(1)
         finally:
             cur.execute("DELETE FROM matchbox")
+            con.commit()
             for xx in mboxes:
                 toPrintTwo = encodeClassToJson(xx)
                 cur.execute("INSERT INTO matchbox VALUES (%s)",(toPrintTwo,))

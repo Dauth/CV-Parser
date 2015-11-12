@@ -29,7 +29,7 @@ box-shadow: none;
     <div class="span6">
         <form id="uploadimage" action="fileUpload.php" method="post" enctype="multipart/form-data">
    <input type="text" id="nameJob" name="nameJob" placeholder="Job Title" value=""/><br />
-            <input type="text" id="keyword" name="keyword" placeholder="Type in keywords seperated by space" value=""/><br /><br/>
+            <input type="text" id="keyword" name="keyword" placeholder="Type in keywords separated by a comma" value=""/><br /><br/>
             <input type="file" name="classnotes" value="" /><br />
    <p><input type="submit" name="submit" value="Submit" /></p>
 </form>
