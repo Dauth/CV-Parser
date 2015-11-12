@@ -27,16 +27,11 @@ require("class.filetotext.php");
           {
               $result = move_uploaded_file($_FILES['classnotes']['tmp_name'], "data/$name.pdf");
 
-              //$docObj = new Filetotext("data/$name.pdf");
-             //$mainString = $docObj->convertToText();
+
 
                 exec('pdftotext.exe data/'.$name.'.pdf -table');
                 exec('python garyconvert.py "'.$name.'"');
 
-              $mainJSON = array();
-
-
-              array_push($mainJSON,$mainString);
 
 
 
@@ -45,8 +40,15 @@ echo $name;
               $name = $_POST['nameJob'];
               echo $name;
               $keyword = $_POST['keyword'];
+              $keyword = str_replace(",", "\n", $keyword);
+              $myfile = fopen("2.txt", "w") or die("Unable to open file!");
+fwrite($myfile, $keyword);
+fclose($myfile);
 
-              exec('python CreateNewJob.py "'.$name.'" "'.$contentName.'" "'.$keyword.'" '.json_encode($mainJSON));
+                exec('python garyconvertKeyword.py');
+
+              echo $keyword;
+              exec('python CreateNewJob.py "'.$name.'" "'.$contentName.'" "'.$keyword.'"');
               echo "this is from php";
               echo json_encode($mainJSON);
 

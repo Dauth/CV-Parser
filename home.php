@@ -94,27 +94,7 @@
 </div>
 <div class="footer">
 <hr/>
-      <div class="row-fluid"> <div class="span3 centered-text">
-
-
-        </div>
-         <div class="span3" style="height:200px;padding:20px;color:white;background-color:#2272FF">
-<h4>Life at XXX</h4>
-             <div style="font-size:120%"><br/>
-  Work and play<br/>Culture<br/>International
-</div>  
-        </div>
-           <div class="span3" style="height:200px;padding:20px;color:white;background-color:#94CC07">
-<h4>Teams and roles</h4>
-              <br/><div style="font-size:120%">
-  Organization hierarchy<br/>Team dynamics<br/>Team portfolio
-</div>  
-        </div>
-          <div class="span3" style="height:200px;padding:20px;color:white;background-color:#84B20F">
-<h4>Connect with us</h4>
-              <br/><div style="font-size:200%"><i class="fa fa-facebook-official"></i>&nbsp&nbsp<i class="fa fa-twitter-square"></i>&nbsp&nbsp<i class="fa fa-youtube-square"></i>&nbsp&nbsp<i class="fa fa-linkedin-square"></i></div>  <br/>
-        </div>
-    </div>  
+      
 
     <div style="text-align:right;"><img src="images/x.png" alt="" width="4%"><br/><br/><a>Legal</a> | <a>Privacy</a> | <a>Contact us</a> | © 2015 XXX</div><hr/>
 </div>
