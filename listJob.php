@@ -203,7 +203,6 @@ border-radius: 3px;
              
              str = str + "<h4>Location</h4>";
              
-
              str = str + "<div class='inner'>" +  b.location.json.address + "</div>" + " "; 
              
              str = str + "<h4>Education</h4>"; 

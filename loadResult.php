@@ -1,5 +1,7 @@
 <?php
 
+ini_set('max_execution_time', 300);
+
 include 'db.php';
 
 $gaSql['link'] = pg_connect(
@@ -38,10 +40,26 @@ while ($row = pg_fetch_row($result))
     }
 }
 
-usort($major, 'sortByOrder');
+$uniqueArray = array();
+$majorFiltered = array();
+
+foreach($major as $key) 
+{
+    if (in_array($key[0], $uniqueArray)) 
+    {
+        
+    }
+    else
+    {
+        array_push($majorFiltered,$key);
+        array_push($uniqueArray,$key[0]);
+    }    
+}
+
+usort($majorFiltered, 'sortByOrder');
 $retta = array();
 $counta = 1;
-foreach($major as $key) {
+foreach($majorFiltered as $key) {
 
     $matchedKeyWords = array();
     $select_query3= sprintf("SELECT * FROM matchbox");
@@ -65,6 +83,8 @@ foreach($major as $key) {
             }
         }
     }
+    
+    $matchedKeyWords = array_unique($matchedKeyWords);
     
     $select_query2 = sprintf("SELECT * FROM resume WHERE resume_contentname='%s'",pg_escape_string($key[0]));
     $result2 = pg_query($gaSql['link'] , $select_query2);

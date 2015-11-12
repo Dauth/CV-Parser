@@ -9,7 +9,7 @@ $gaSql['link'] = pg_connect(
     " password=".$gaSql['password']
 ) or die('Could not connect: ' . pg_last_error());   
 
-$select_query = sprintf("SELECT * FROM resume",pg_escape_string(1));
+$select_query = sprintf("SELECT * FROM resume ORDER BY resume_name",pg_escape_string(1));
 $result = pg_query($gaSql['link'] , $select_query);
 
 if (!$result) 

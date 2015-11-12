@@ -68,7 +68,7 @@ finally:
                 cur.execute("SELECT isonce_resume FROM once")
                 rows = cur.fetchall()
                 for row in rows:
-                    if(row[0]=='TRUE'):
+                    if(row[0] is True):
                         cur.execute("UPDATE once SET isonce_resume=%s",('FALSE',))
                         con.commit()
                         matcher.matchAll(0)
@@ -76,5 +76,6 @@ finally:
                     else:
                         matcher.matchAll(1)
                         scorer.calculateScore()
+                        print('here')
             con.close()
 

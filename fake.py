@@ -25,6 +25,9 @@ except psycopg2.DatabaseError as e:
     sys.exit(1)
 finally:
     if con:
-        cur.execute("UPDATE once SET isonce_job=%s",('FALSE',))
-        con.commit()
-        con.close()
+        cur.execute("SELECT isonce_resume FROM once")
+        rows = cur.fetchall()
+        print('fff')
+        for row in rows:
+            if(row[0] is True):
+                print('fff')

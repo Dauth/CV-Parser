@@ -28,6 +28,8 @@ class Facade(object):
                     pp = str(row[0])
                     print (pp)
                     s.append(decodeJsonToClass(pp))
+                cur.execute("UPDATE resume SET resume_isprocessed=%s",('t'));
+                con.commit()
             con.close()
             return s
 
@@ -63,13 +65,14 @@ class Facade(object):
             sys.exit(1)
         finally:
             if con:
-                cur.execute("SELECT job_data::text  FROM job WHERE job_isprocessed = %s",('f'));
+                cur.execute("SELECT job_data::text FROM job WHERE job_isprocessed = %s",('f'));
                 rows = cur.fetchall()
                 for row in rows:
                     pp = str(row[0])
                     print (pp)
                     s.append(decodeJsonToClass(pp))
                 cur.execute("UPDATE job SET job_isprocessed=%s",('t'));
+                con.commit()
             con.close()
             return s
 

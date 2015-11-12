@@ -143,11 +143,14 @@ border-radius: 3px;
              
              str =  str + "Name : " + b.name + "<br/><br/>Email : " + b.email + "<br/><br/>H/P : " + b.hpNumber;
              
+              if(b.location != null)
+                  {
+
               str = str + "<h4>Location</h4>";
              
 
              str = str + "<div class='inner'>" +  b.location.json.address + "</div>" + " "; 
-             
+                  }
              str = str + "<h4>Education</h4>"; 
              
              Object.keys(b.education).forEach(function (key) {
