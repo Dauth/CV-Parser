@@ -16,7 +16,7 @@ class ExperienceParser(IParser):
     def parse(self, node, fieldNode):
         if bool(fieldNode.getExperienceIndex()):
             if node.getContentType() == 'RESUME':
-                #self.extractFromResume(node, fieldNode)
+                self.extractFromResume(node, fieldNode)
                 self.extractFromJob(node, fieldNode)
             else:
                 self.extractFromJob(node, fieldNode)
