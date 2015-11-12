@@ -16,7 +16,7 @@ class ExperienceParser(IParser):
     def parse(self, node, fieldNode):
         if bool(fieldNode.getExperienceIndex()):
             if node.getContentType() == 'RESUME':
-                self.extractFromResume(node, fieldNode)
+                #self.extractFromResume(node, fieldNode)
                 self.extractFromJob(node, fieldNode)
             else:
                 self.extractFromJob(node, fieldNode)
@@ -43,10 +43,11 @@ class ExperienceParser(IParser):
                 for word in annotatedList:
                     if yearIndex is not None and word[0].isalpha():
                         experienceSubNode = ExperienceSubNode(word, " ".join(wordsInList[yearIndex-1 : yearIndex+1]))
+                        node.addExperience(experienceSubNode)
                     else:
                         if word[0].isalpha():
                             experienceSubNode = ExperienceSubNode(word, None)
-                    node.addExperience(experienceSubNode)
+                            node.addExperience(experienceSubNode)
             except:
                 pass
 
