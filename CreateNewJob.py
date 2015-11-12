@@ -55,7 +55,7 @@ finally:
             cur.execute("SELECT isonce_job FROM once")
             rows = cur.fetchall()
             for row in rows:
-                if(row[0]=='TRUE'):
+                if(row[0] is True):
                     cur.execute("UPDATE once SET isonce_job=%s",('FALSE',))
                     con.commit()
                     matcher.matchAll(0)
