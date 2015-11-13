@@ -62,27 +62,13 @@ $counta = 1;
 foreach($majorFiltered as $key) {
 
     $matchedKeyWords = array();
-    $select_query3= sprintf("SELECT * FROM matchbox");
-    $result3 = pg_query($gaSql['link'] , $select_query3);
     
-    while ($row3 = pg_fetch_row($result3))
+    
+    for($z=0;$z<count($key[2]);$z++)
     {
-        $js = json_decode($row3[0],true);
-        if($js['job']['contentId']===$jobInQn)
-        {
-            for($y=0;$y<count($js['matches']['py/set']);$y++)
-            {
-                if($js['matches']['py/set'][$y]['resume']['contentId']==$key[0])
-                {
-
-                    for($z=0;$z<count($js['matches']['py/set'][$y]['matchedKeywords']);$z++)
-                    {
-                       array_push($matchedKeyWords,$js['matches']['py/set'][$y]['matchedKeywords'][$z]);
-                    }
-                }
-            }
-        }
+       array_push($matchedKeyWords,$key[2][$z]);
     }
+                
     
     $matchedKeyWords = array_unique($matchedKeyWords);
     
