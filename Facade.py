@@ -69,7 +69,6 @@ class Facade(object):
                 rows = cur.fetchall()
                 for row in rows:
                     pp = str(row[0])
-                    print (pp)
                     s.append(decodeJsonToClass(pp))
                 cur.execute("UPDATE job SET job_isprocessed=%s",('t'));
                 con.commit()
@@ -91,7 +90,6 @@ class Facade(object):
                 rows = cur.fetchall()
                 for row in rows:
                     pp = str(row[0])
-                    print (pp)
                     s.append(decodeJsonToClass(pp))
             con.close()
             return s
@@ -111,7 +109,6 @@ class Facade(object):
                         rows = cur.fetchall()
                         for row in rows:
                             pp = str(row[0])
-                            print (pp)
                             s.add(decodeJsonToClass(pp))
                 con.close()
                 return s
@@ -125,6 +122,8 @@ class Facade(object):
             print ('Error %s' % e)
             sys.exit(1)
         finally:
+            cur.execute("DELETE FROM matchbox")
+            con.commit()
             for xx in mboxes:
                 toPrintTwo = encodeClassToJson(xx)
                 cur.execute("INSERT INTO matchbox VALUES (%s)",(toPrintTwo,))
@@ -140,8 +139,6 @@ class Facade(object):
             print ('Error %s' % e)
             sys.exit(1)
         finally:
-            cur.execute("DELETE FROM matchbox")
-            con.commit()
             for xx in mboxes:
                 toPrintTwo = encodeClassToJson(xx)
                 cur.execute("INSERT INTO matchbox VALUES (%s)",(toPrintTwo,))

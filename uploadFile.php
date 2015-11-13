@@ -27,7 +27,6 @@ require("class.filetotext.php");
 
             $content = file_get_contents($_FILES['classnotes']['tmp_name']);
 
-          $mainString = "f";
           if ($content) 
           {
               $result = move_uploaded_file($_FILES['classnotes']['tmp_name'], "data/$name.pdf");
@@ -36,11 +35,11 @@ require("class.filetotext.php");
 			exec('pdftotext.exe data/'.$name.'.pdf -table');
                 exec('python garyconvert.py "'.$name.'"');
 
-              $mainJSON = array();
+          
               
             
               
-              array_push($mainJSON,$mainString);
+             
               
          
               
@@ -50,12 +49,10 @@ require("class.filetotext.php");
               $hp = $_POST['hpSeeker'];
               $email = $_POST['emailSeeker'];
 
-              echo exec('python CreateNewResume.py "'.$name.'" "'.$hp.'" "'.$email.'" "'.$contentName.'" '.json_encode($mainJSON));
-              echo "this is from php";
-              echo json_encode($mainJSON);
+              echo exec('python CreateNewResume.py "'.$name.'" "'.$hp.'" "'.$email.'" "'.$contentName.'"');
+            
               echo pg_last_error();
               
-              echo $mainString;
           }
               
          

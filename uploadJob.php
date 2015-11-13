@@ -47,17 +47,13 @@ echo $name;
               $myfile = fopen("2.txt", "w") or die("Unable to open file!");
 fwrite($myfile, $keyword);
 fclose($myfile);
-
+              
                 exec('python garyconvertKeyword.py');
 
-              echo $keyword;
-              exec('python CreateNewJob.py "'.$name.'" "'.$contentName.'" "'.$keyword.'"');
-              echo "this is from php";
-              echo json_encode($mainJSON);
-
-
-
-              echo json_encode($mainJSON);
+              echo "from php , emtering createnewjob";
+              echo exec('python CreateNewJob.py "'.$name.'" "'.$contentName.'"');
+              echo "from php , finished createnewjob";
+              
 
                 echo pg_last_error();
 

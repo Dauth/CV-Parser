@@ -17,6 +17,9 @@ from CustomClassJson import decodeJsonToClass
 from ResumeProcessor import ResumeProcessor
 import json
 
+
+print("entering create new resume")
+
 name = sys.argv[1]
 hpNumber = sys.argv[2]
 email = sys.argv[3]
@@ -25,7 +28,6 @@ contentName = sys.argv[4]
 with open("1.json", encoding='utf-8') as inFile:
     contentFile = json.load(inFile)
 
-print(contentFile)
 contentFile[0] =  contentFile[0].replace("\f", " ")
 
 
@@ -47,19 +49,14 @@ finally:
             numRows = (len(rows))
 
             if (numRows == 0):
-                print(type(newResume))
                 ResumeProcessor.construct(newResume)
                 toPrint = encodeClassToJson(newResume)
-                #print(type(newResume.getContent()))
-                print(toPrint)
                 cur.execute("INSERT INTO resume VALUES (%s,%s,%s,%s,%s,%s)",(toPrint,'f',contentName,name,hpNumber,email))
                 con.commit()
+                print('just store resume')
             else:
-                print(type(newResume))
                 ResumeProcessor.construct(newResume)
                 toPrint = encodeClassToJson(newResume)
-                #print(type(newResume.getContent()))
-                print(toPrint)
                 cur.execute("INSERT INTO resume VALUES (%s,%s,%s,%s,%s,%s)",(toPrint,'f',contentName,name,hpNumber,email))
                 con.commit()
                 f = Facade()
@@ -69,13 +66,14 @@ finally:
                 rows = cur.fetchall()
                 for row in rows:
                     if(row[0] is True):
-                        cur.execute("UPDATE once SET isonce_resume=%s",('FALSE',))
+                        cur.execute("UPDATE once SET isonce_resume=%s",('f',))
                         con.commit()
                         matcher.matchAll(0)
                         scorer.calculateScore()
+                        print('calling match 0')
                     else:
                         matcher.matchAll(1)
                         scorer.calculateScore()
-                        print('here')
+                        print('calling match 1')
             con.close()
 
